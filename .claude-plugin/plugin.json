@@ -1,0 +1,34 @@
+{
+  "name": "openregistry",
+  "version": "1.0.0",
+  "description": "Live, government-identical company data from 27 national registries. Cross-border UBO chain walker. A platform by Sophymarine.",
+  "author": {
+    "name": "Sophymarine",
+    "email": "contact@sophymarine.com",
+    "url": "https://sophymarine.com"
+  },
+  "homepage": "https://openregistry.sophymarine.com",
+  "repository": "https://github.com/sophymarine/openregistry",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "company-data",
+    "kyc",
+    "aml",
+    "due-diligence",
+    "ubo",
+    "beneficial-ownership",
+    "compliance",
+    "mcp",
+    "cross-border",
+    "government-data",
+    "companies-house",
+    "opendart",
+    "handelsregister",
+    "cima",
+    "rne",
+    "xbrl",
+    "shell-company",
+    "pep-screening",
+    "sophymarine"
+  ]
+}
