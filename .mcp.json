@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "openregistry": {
+      "url": "https://openregistry.sophymarine.com/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
