@@ -1,68 +1,46 @@
 # OpenRegistry
 
-**Real-time queries. Raw data. Raw documents. Synced directly from official registries — no intermediaries.**
+**Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
 
-OpenRegistry is a free remote MCP server — a platform by [Sophymarine](0) — that connects AI agents directly to official national company registries as typed, structured tools. Search companies, fetch profiles, list filings, retrieve officers and beneficial owners, trace directors across companies, and download raw filing documents — all without leaving your AI client.
+OpenRegistry is your AI agent's live hotline to 27 national company registries — UK Companies House, France RNE, Germany Handelsregister, Italy InfoCamere (via EU BRIS), Spain BORME, Poland KRS, Korea OpenDART, Canada CBCA, 10 US states, and more.
 
-Every call proxies directly to the official registry in real time. There is no third-party data warehouse, no nightly scrape, no AI interpretation between you and the official record.
+**We return the registry's own response — unmodified.** Every field name, every status value, every raw filing byte (XHTML iXBRL / PDF / XBRL) is preserved exactly as the government's system emits it. The identifiers and jurisdiction routing let you reconstruct the government URL for any record. No aggregator markup. No field renames. No document re-rendering. No AI reinterpretation. No stale cache.
 
-Hosted endpoint: **````json
-{
-  "mcpServers": {
-    "openregistry": {
-      "url": "5"
-    }
-  }
-}
-```
+**Chain queries across borders in a single prompt** — a UK Ltd → its Luxembourg SARL → its Cayman LP → the Jersey trust → the individual beneficiary, all in one conversation. Walk ownership structures through 27 jurisdictions to unmask the real person behind any company.
 
----
+Hosted endpoint: **`https://openregistry.sophymarine.com/mcp`**
 
-## Why OpenRegistry
+A platform by [Sophymarine](https://sophymarine.com).
 
-- **Real-time.** Every tool call is a live query to the upstream registry API — not a cached snapshot, not a third-party aggregator, not a nightly scrape. Pass `fresh=true` to bypass even the short-lived performance cache.
-- **Raw data.** Company profiles, officer lists, shareholder registers, beneficial-ownership entries, charges, and filing metadata come back with upstream field names preserved. No opinions. No AI interpretation between you and the record.
-- **Official source.** Data comes from the statutory registry of record for each jurisdiction — not a scraper third-hand.
-- **No intermediaries.** No third-party data warehouse, no nightly scrape, no translation layer between your AI and the registry.
-- **Free for anonymous use.** No API key, no account, no installation — add the server URL and it works. Sign in (passwordless, email magic link) for higher rate limits and multi-country search fan-out. See [Tiers](2).
+## The 6 pillars
 
-## Jurisdictions covered
-
-| Region | Registries |
+| | |
 |---|---|
-| UK & Crown Dependencies | **GB** Companies House, **IM** Isle of Man, **KY** Cayman CIMA |
-| EU | **FR** RNE, **DE** Handelsregister, **IT** InfoCamere (via BRIS), **ES** BORME, **NL** KVK¹, **BE** KBO, **IE** CRO, **PL** KRS, **CZ** ARES, **FI** PRH, **CY** DRCOR, **LI** Handelsregister, **MC** RCI |
-| Nordics | **NO** Brreg, **FI** PRH, **IS** Skatturinn |
-| Switzerland | **CH** Zefix + SHAB/SOGC delta stream |
-| North America | **CA** (federal CBCA, **CA-BC** OrgBook, **CA-NT**), **US-NY**, **US-CA**, **US-FL**, **US-CT**, **US-PA**, **US-CO**, **US-OR**, **US-IA**, **US-OH** |
-| Latin America | **MX** PSM, **BR** CNPJ² |
-| Asia-Pacific | **AU** ABR, **NZ** Companies Office¹, **HK** CR, **TW** GCIS, **KR** OpenDART, **MY** SSM, **ID** AHU, **IN** MCA |
-| CIS | **RU** FNS + GIR BO + Interfax |
+| **1. Live** | Every tool call is a real-time query to the upstream government registry API at the moment you ask. |
+| **2. Direct-to-government** | No aggregator, no third-party data warehouse, no nightly scrape. Your AI talks to UK Companies House, France INSEE, German Registerportal, Korean FSS OpenDART directly. |
+| **3. Unmodified + source-linked** | Every field name, every status code, every raw filing byte returned verbatim. The registry's own identifiers are preserved so any response traces back to the government record. Enterprise tier adds pre-synthesised `source_url` / `registry_url` / `data_license` fields. |
+| **4. Zero-stale** | No cache layer we control can ever go stale. You see an update the moment the government records it. Contrast with commercial data providers that serve 6-24 hour-old snapshots. |
+| **5. Stable** | Production-grade reliability, running on Cloudflare Workers' global edge + a warm pool of per-jurisdiction workers for stateful registries. |
+| **6. Cross-border** | Chain queries across 27 registries in a single prompt. Walk UK Ltd → LU SARL → KY LP → individual without leaving the conversation. |
 
-¹ listed in registry, coverage incomplete · ² identifier-only lookup
+## Ready-to-use skills
 
-`list_jurisdictions` returns the authoritative, up-to-date capability matrix — which tools are live per country, which are paid-tier-only, which return `501 alternative_url` pointing at a paid upstream.
+We publish 10 professional Claude Agent Skills for the most common OpenRegistry workflows. Drop them into your Claude Code project's `.claude/skills/` directory or into any Claude-compatible agent — invoke by intent.
 
-## Tools
+| # | Skill | Outcome in one prompt |
+|---|---|---|
+| 1 | [**KYC & Cross-Border Due Diligence**](./skills/kyc-cross-border-due-diligence/SKILL.md) | Full statutory dossier: profile + directors + UBO + shareholders + charges + latest accounts |
+| **2 ⭐** | [**Cross-Border UBO Chain Walker**](./skills/ubo-cross-border-chain-walker/SKILL.md) | **Walk the ownership chain across jurisdictions until you reach the real individual** |
+| 3 | [**Director Search & PEP Screening**](./skills/director-search-pep-screening/SKILL.md) | Every company a person has run + co-director network |
+| 4 | [**Live Company Accounts & XBRL Financials**](./skills/live-company-accounts-xbrl/SKILL.md) | Latest statutory accounts as machine-readable XBRL / iXBRL / PDF + key figures |
+| 5 | [**Corporate Filing Monitor & Event Alert**](./skills/corporate-filing-monitor/SKILL.md) | Material filings in a window, categorised and flagged |
+| 6 | [**Global Company Name Availability Check**](./skills/global-company-name-availability/SKILL.md) | Is a name free to register across 10+ countries? |
+| 7 | [**Industry & Competitor Company Search**](./skills/industry-competitor-search/SKILL.md) | Every company in a sector across N jurisdictions, ranked + enriched |
+| 8 | [**Shell Company Detector**](./skills/shell-company-detector/SKILL.md) | Flag 1-director + no-accounts + overseas-office shells (AML signal) |
+| 9 | [**Phoenix Company Radar**](./skills/phoenix-company-radar/SKILL.md) | Detect dissolved-then-reborn fraud patterns (same director, same address) |
+| 10 | [**Sector Gatekeeper List**](./skills/sector-gatekeeper-list/SKILL.md) | Every CIMA / FCA / BaFin / FSS-licensed regulated entity |
 
-| Tool | What it does |
-|---|---|
-| `search_companies` | Find companies by name. Supports single-country direct search and user-confirmed multi-country fan-out. |
-| `get_company_profile` | Full company profile with every upstream field preserved in `jurisdiction_data`. |
-| `get_officers` | Current and historical directors / secretaries / officers. |
-| `get_shareholders` | Shareholders / quota-holders where the registry publishes them. |
-| `get_persons_with_significant_control` | Beneficial-ownership register entries (UBO). |
-| `get_charges` | Registered mortgages and security interests. |
-| `list_filings` | Filing history with document IDs and category filter. |
-| `fetch_document` | Raw filing bytes (XHTML / PDF / XML) or source URL. |
-| `get_document_metadata` | Document formats and sizes before downloading. |
-| `get_financials` | Annual financial-statement filings with normalised fiscal-period shape. |
-| `search_officers` | Find people by name across all company appointments. |
-| `get_officer_appointments` | Every company a person has been appointed to. |
-| `list_jurisdictions` | Discover the live capability matrix per registry. |
-| `about` | Compact capability + pricing summary. |
-
-The [hosted API reference](3) documents per-jurisdiction coverage, identifier formats, and 501 routing for paid-upstream fallbacks.
+See [`skills/README.md`](./skills/README.md) for the skillpack overview.
 
 ## Connect
 
@@ -74,7 +52,7 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "openregistry": {
-      "url": "4",
+      "url": "https://openregistry.sophymarine.com/mcp",
       "transport": "http"
     }
   }
@@ -89,7 +67,7 @@ Add to `~/.cursor/mcp.json`:
 {
   "mcpServers": {
     "openregistry": {
-      "url": "5"
+      "url": "https://openregistry.sophymarine.com/mcp"
     }
   }
 }
@@ -108,70 +86,57 @@ Settings → Cline → MCP Servers → Add:
 ```json
 {
   "openregistry": {
-    "url": "7",
+    "url": "https://openregistry.sophymarine.com/mcp",
     "transport": "streamable-http"
   }
 }
 ```
 
-See [`llms-install.md`](./llms-install.md) for automated installs by LLM-driven clients.
+See [`llms-install.md`](./llms-install.md) for automated LLM-driven installs.
 
 ### Anything else speaking MCP
 
-Streamable HTTP transport per [MCP spec 2025-06-18](8). OAuth 2.1 authorization flow for the authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
+Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow for authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
 
 ## Tiers
 
-| Tier | Price | Rate limit | Multi-country search fan-out |
-|---|---|---|---|
-| Anonymous | free | 20/min per IP | 3 countries / 60s |
-| Free (signed in) | free | 30/min per user | 3 countries / 60s |
-| Pro | $9/mo | 180/min per user | 10 countries / 60s |
-| Max | $29/mo | 900/min per user | 30 countries / 60s |
-| Enterprise | contact sales | 3000/min per user | unlimited + source URLs included |
+| Tier | Price | Rate limit | Cross-border fan-out | Source URLs |
+|---|---|---|---|---|
+| Anonymous | free | 20/min per IP | 3 countries / 60s | identifiers only (URL reconstructable) |
+| Free (signed in) | free | 30/min per user | 3 countries / 60s | identifiers only |
+| Pro | $9/mo | 180/min per user | 10 countries / 60s | identifiers only |
+| Max | $29/mo | 900/min per user | 30 countries / 60s | identifiers only |
+| Enterprise | contact | 3000/min per user | unlimited | **`source_url` / `registry_url` / `data_license` synthesised** |
 
-All tiers receive the same unified schema and full raw upstream data. Enterprise adds synthesised source-URL / registry-name / data-license fields.
+All tiers receive the full unmodified upstream data — the only thing Enterprise adds is pre-built source-URL fields for audit-trail convenience.
 
-Full pricing and tier details: [openregistry.sophymarine.com/tiers](9).
+## Provenance & Auditability
 
-## Examples
+Every response preserves the upstream registry's identifiers so any fact can be verified at the government record:
 
-**Look up a company and fetch its latest accounts:**
-> "Search Companies House for Monzo Bank, get their full company profile, and show me their most recent accounts filing."
+- `jurisdiction` + `company_id` → reconstruct the government URL (e.g. `https://find-and-update.company-information.service.gov.uk/company/09446231`)
+- `document_id` → the government's own filing identifier, resolvable back to their portal
+- `jurisdiction_data` → the raw upstream object with every field name preserved
+- Filing documents (XHTML iXBRL / PDF / XBRL) returned as raw bytes — no re-rendering
 
-The assistant will chain `search_companies` → `get_company_profile` → `list_filings(category='accounts')` → `fetch_document` and analyse the filing inline.
-
-**Trace a director across every company they've run:**
-> "Find every UK company where Elon Musk has been a director, and show me which ones are still active."
-
-→ `search_officers(GB)` → `get_officer_appointments(GB)`.
-
-**Beneficial ownership analysis:**
-> "For company number 00000006 (Pilkington), who are the persons with significant control, and what mortgages are registered against them?"
-
-→ `get_persons_with_significant_control(GB)` + `get_charges(GB)`.
-
-**Figure out the country first:**
-> "I think a company called 'Equinor' exists somewhere — find it for me."
-
-OpenRegistry pops an MCP elicitation dialog showing its country guesses (`NO`, `GB`, `DK`) — the user deselects / adds / confirms within tier cap, the server runs the final list in parallel and merges results with per-row `jurisdiction` tags. Multi-country search never runs silently behind the user's back.
+Enterprise tier pre-synthesises `source_url` / `registry_url` / `registry_name` / `data_license` / `alternative_url` into every response for one-click audit-trail in compliance reports.
 
 ## Security and compliance
 
 - **Auth**: OAuth 2.1 + PKCE, passwordless email magic links, RFC 7591 Dynamic Client Registration. No pre-shared API keys.
-- **Privacy**: OpenRegistry proxies official public-registry data. Beneficial-ownership registers that became access-restricted post-CJEU C-37/20 (DE, ES, IT, NL) are not proxied — the tool returns `501 alternative_url` pointing at the statutory gated portal (AML-obliged entities only).
+- **Privacy**: OpenRegistry proxies official public-registry data. Beneficial-ownership registers that became access-restricted post-CJEU C-37/20 (DE, ES, IT, NL, LU, AT, MT, PT) are not proxied — the tool returns `501 alternative_url` pointing at the statutory gated portal (AML-obliged entities only). We explicitly flag where AML gates block the ownership chain.
 - **Rate limits**: per-user for authenticated traffic, per-IP for anonymous — plus a per-jurisdiction upstream-protection cap shared across all users, to keep OpenRegistry a good citizen with the registries we depend on.
 
 ## Support
 
-- **Hosted app + account management**: [openregistry.sophymarine.com/account](10)
-- **Tool capability matrix**: `list_jurisdictions` (or [openregistry.sophymarine.com/jurisdictions](11))
+- **Hosted app + account management**: [openregistry.sophymarine.com/account](https://openregistry.sophymarine.com/account)
+- **Tool capability matrix**: call `list_jurisdictions` or visit [openregistry.sophymarine.com/jurisdictions](https://openregistry.sophymarine.com/jurisdictions)
 - **Enterprise inquiries / partnerships**: contact@sophymarine.com
-- **Status + uptime**: [openregistry.sophymarine.com/status](12)
-- **This repo** is documentation only. The OpenRegistry service implementation is closed-source; raise issues or feature requests here for the *integration experience* (documentation, examples, install flows).
+- **Status + uptime**: [openregistry.sophymarine.com/status](https://openregistry.sophymarine.com/status)
+- **This repo** is documentation only. The OpenRegistry service implementation is closed-source; raise issues here for the *integration experience* (documentation, examples, install flows).
 
 ---
 
-**OpenRegistry is a platform by [Sophymarine](13).**
+**OpenRegistry is a platform by [Sophymarine](https://sophymarine.com).**
 
-© 2026 Sophymarine. The OpenRegistry name and logo are trademarks of Sophymarine. Documentation in this repository is published under CC-BY-4.0.
+© 2026 Sophymarine. OpenRegistry and Sophymarine are trademarks of Sophymarine. Documentation in this repository is published under CC-BY-4.0.
