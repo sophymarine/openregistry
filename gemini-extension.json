@@ -1,0 +1,11 @@
+{
+  "name": "openregistry",
+  "version": "1.0.0",
+  "description": "Live, government-identical company data from 27 national registries. Cross-border UBO chain walker. A platform by Sophymarine.",
+  "mcpServers": {
+    "openregistry": {
+      "httpUrl": "https://openregistry.sophymarine.com/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
