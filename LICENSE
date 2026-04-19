@@ -1,0 +1,25 @@
+Documentation License — CC BY 4.0
+====================================
+
+The documentation in this repository (README.md, llms-install.md, and any
+other prose content) is © 2026 sophymarine and licensed under the Creative
+Commons Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share and adapt this documentation for any purpose, including
+commercially, provided you give appropriate credit, link to the license, and
+indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Name and trademarks
+-------------------
+
+"openregistry" and "sophymarine" are trademarks of sophymarine. The CC BY 4.0
+license applies to the prose documentation only; it does not grant permission
+to use the marks, logos, or product identity in a way that suggests endorsement
+by or affiliation with sophymarine. Contact contact@sophymarine.com for
+trademark / partnership inquiries.
+
+The openregistry service (the hosted server at openregistry.sophymarine.com)
+is a proprietary, closed-source product. Access is governed by the Terms of
+Service published at https://openregistry.sophymarine.com/terms.
