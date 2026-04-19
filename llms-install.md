@@ -21,7 +21,15 @@ OpenRegistry is a **remote hosted MCP server** — there is no local package to 
 
 - **Anonymous access is supported out of the box** — no auth needed, rate-limited to 20 req/min per IP, 3-country fan-out per 60s window. This is the default if the client does not initiate an OAuth flow.
 - **Optional OAuth 2.1** — for higher rate limits and enterprise source-provenance fields. If the client supports the MCP OAuth 2.1 authorization flow (MCP spec 2025-06-18), it will:
-  1. Fetch `2
+  1. Fetch ````json
+{
+  "jurisdictions": [
+    { "code": "GB", "name": "United Kingdom — Companies House", "status": "live", "tools": [...] },
+    { "code": "NO", "name": "Norway — Brønnøysundregistrene", "status": "live", "tools": [...] },
+    ...
+  ]
+}
+```
   2. Register itself via Dynamic Client Registration (RFC 7591) — no pre-shared client ID / secret
   3. Open a browser window to `https://openregistry.sophymarine.com/login` for passwordless email sign-in
   4. Receive an access token automatically
