@@ -2,15 +2,23 @@
 
 **Real-time queries. Raw data. Raw documents. Synced directly from official registries — no intermediaries.**
 
-OpenRegistry is a free remote MCP server — a platform by [sophymarine](0) — that connects AI agents directly to official national company registries as typed, structured tools. Search companies, fetch profiles, list filings, retrieve officers and beneficial owners, trace directors across companies, and download raw filing documents — all without leaving your AI client.
+OpenRegistry is a free remote MCP server — a platform by [Sophymarine](0) — that connects AI agents directly to official national company registries as typed, structured tools. Search companies, fetch profiles, list filings, retrieve officers and beneficial owners, trace directors across companies, and download raw filing documents — all without leaving your AI client.
 
 Every call proxies directly to the official registry in real time. There is no third-party data warehouse, no nightly scrape, no AI interpretation between you and the official record.
 
-Hosted endpoint: **`1
+Hosted endpoint: **````json
+{
+  "mcpServers": {
+    "openregistry": {
+      "url": "5"
+    }
+  }
+}
+```
 
 ---
 
-## Why openregistry
+## Why OpenRegistry
 
 - **Real-time.** Every tool call is a live query to the upstream registry API — not a cached snapshot, not a third-party aggregator, not a nightly scrape. Pass `fresh=true` to bypass even the short-lived performance cache.
 - **Raw data.** Company profiles, officer lists, shareholder registers, beneficial-ownership entries, charges, and filing metadata come back with upstream field names preserved. No opinions. No AI interpretation between you and the record.
@@ -146,13 +154,13 @@ The assistant will chain `search_companies` → `get_company_profile` → `list_
 **Figure out the country first:**
 > "I think a company called 'Equinor' exists somewhere — find it for me."
 
-openregistry pops an MCP elicitation dialog showing its country guesses (`NO`, `GB`, `DK`) — the user deselects / adds / confirms within tier cap, the server runs the final list in parallel and merges results with per-row `jurisdiction` tags. Multi-country search never runs silently behind the user's back.
+OpenRegistry pops an MCP elicitation dialog showing its country guesses (`NO`, `GB`, `DK`) — the user deselects / adds / confirms within tier cap, the server runs the final list in parallel and merges results with per-row `jurisdiction` tags. Multi-country search never runs silently behind the user's back.
 
 ## Security and compliance
 
 - **Auth**: OAuth 2.1 + PKCE, passwordless email magic links, RFC 7591 Dynamic Client Registration. No pre-shared API keys.
-- **Privacy**: openregistry proxies official public-registry data. Beneficial-ownership registers that became access-restricted post-CJEU C-37/20 (DE, ES, IT, NL) are not proxied — the tool returns `501 alternative_url` pointing at the statutory gated portal (AML-obliged entities only).
-- **Rate limits**: per-user for authenticated traffic, per-IP for anonymous — plus a per-jurisdiction upstream-protection cap shared across all users, to keep openregistry a good citizen with the registries we depend on.
+- **Privacy**: OpenRegistry proxies official public-registry data. Beneficial-ownership registers that became access-restricted post-CJEU C-37/20 (DE, ES, IT, NL) are not proxied — the tool returns `501 alternative_url` pointing at the statutory gated portal (AML-obliged entities only).
+- **Rate limits**: per-user for authenticated traffic, per-IP for anonymous — plus a per-jurisdiction upstream-protection cap shared across all users, to keep OpenRegistry a good citizen with the registries we depend on.
 
 ## Support
 
@@ -164,6 +172,6 @@ openregistry pops an MCP elicitation dialog showing its country guesses (`NO`, `
 
 ---
 
-**OpenRegistry is a platform by [sophymarine](13).**
+**OpenRegistry is a platform by [Sophymarine](13).**
 
 © 2026 Sophymarine. The OpenRegistry name and logo are trademarks of Sophymarine. Documentation in this repository is published under CC-BY-4.0.
