@@ -1,8 +1,8 @@
-# openregistry — LLM install instructions
+# OpenRegistry — LLM install instructions
 
-This file is read by LLM-driven MCP installers (e.g. [Cline](https://github.com/cline/cline)) to configure the openregistry server automatically.
+This file is read by LLM-driven MCP installers (e.g. [Cline](0)) to configure the OpenRegistry server automatically.
 
-openregistry is a **remote hosted MCP server** — there is no local package to install, no binary to download, no API key to obtain. The only action required is to add the server URL to the client's MCP configuration.
+OpenRegistry is a **remote hosted MCP server** — there is no local package to install, no binary to download, no API key to obtain. The only action required is to add the server URL to the client's MCP configuration.
 
 ## Recommended config
 
@@ -10,7 +10,7 @@ openregistry is a **remote hosted MCP server** — there is no local package to 
 {
   "mcpServers": {
     "openregistry": {
-      "url": "https://openregistry.sophymarine.com/mcp",
+      "url": "1",
       "transport": "streamable-http"
     }
   }
@@ -21,7 +21,7 @@ openregistry is a **remote hosted MCP server** — there is no local package to 
 
 - **Anonymous access is supported out of the box** — no auth needed, rate-limited to 20 req/min per IP, 3-country fan-out per 60s window. This is the default if the client does not initiate an OAuth flow.
 - **Optional OAuth 2.1** — for higher rate limits and enterprise source-provenance fields. If the client supports the MCP OAuth 2.1 authorization flow (MCP spec 2025-06-18), it will:
-  1. Fetch `https://openregistry.sophymarine.com/.well-known/oauth-protected-resource`
+  1. Fetch `2
   2. Register itself via Dynamic Client Registration (RFC 7591) — no pre-shared client ID / secret
   3. Open a browser window to `https://openregistry.sophymarine.com/login` for passwordless email sign-in
   4. Receive an access token automatically
@@ -53,7 +53,7 @@ Expected shape (truncated):
 
 ## Configuration surface
 
-None required. openregistry is a zero-config remote server. The only optional knob is `fresh=true` passed at tool-call time to bypass the short-lived performance cache.
+None required. OpenRegistry is a zero-config remote server. The only optional knob is `fresh=true` passed at tool-call time to bypass the short-lived performance cache.
 
 ## Support
 
