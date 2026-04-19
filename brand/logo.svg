@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    9 dots at 40° intervals on a circle, matching the Sophymarine icon.
+    Center (32,32), orbit radius 18, dot radius 4.8
+    cx = 32 + sin(deg)*18,  cy = 32 - cos(deg)*18
+  -->
+  <circle cx="32.00" cy="14.00" r="4.8" fill="#1A56DB"/><!-- 0° -->
+  <circle cx="43.57" cy="18.21" r="4.8" fill="#1A56DB"/><!-- 40° -->
+  <circle cx="49.73" cy="28.88" r="4.8" fill="#1A56DB"/><!-- 80° -->
+  <circle cx="47.59" cy="41.00" r="4.8" fill="#1A56DB"/><!-- 120° -->
+  <circle cx="38.16" cy="48.91" r="4.8" fill="#1A56DB"/><!-- 160° -->
+  <circle cx="25.84" cy="48.91" r="4.8" fill="#1A56DB"/><!-- 200° -->
+  <circle cx="16.41" cy="41.00" r="4.8" fill="#1A56DB"/><!-- 240° -->
+  <circle cx="14.27" cy="28.88" r="4.8" fill="#1A56DB"/><!-- 280° -->
+  <circle cx="20.43" cy="18.21" r="4.8" fill="#1A56DB"/><!-- 320° -->
+</svg>
