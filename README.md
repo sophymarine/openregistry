@@ -1,12 +1,12 @@
-# openregistry
+# OpenRegistry
 
 **Real-time queries. Raw data. Raw documents. Synced directly from official registries — no intermediaries.**
 
-openregistry is a free remote MCP server — a platform by [sophymarine](https://sophymarine.com) — that connects AI agents directly to official national company registries as typed, structured tools. Search companies, fetch profiles, list filings, retrieve officers and beneficial owners, trace directors across companies, and download raw filing documents — all without leaving your AI client.
+OpenRegistry is a free remote MCP server — a platform by [sophymarine](0) — that connects AI agents directly to official national company registries as typed, structured tools. Search companies, fetch profiles, list filings, retrieve officers and beneficial owners, trace directors across companies, and download raw filing documents — all without leaving your AI client.
 
 Every call proxies directly to the official registry in real time. There is no third-party data warehouse, no nightly scrape, no AI interpretation between you and the official record.
 
-Hosted endpoint: **`https://openregistry.sophymarine.com/mcp`**
+Hosted endpoint: **`1
 
 ---
 
@@ -16,7 +16,7 @@ Hosted endpoint: **`https://openregistry.sophymarine.com/mcp`**
 - **Raw data.** Company profiles, officer lists, shareholder registers, beneficial-ownership entries, charges, and filing metadata come back with upstream field names preserved. No opinions. No AI interpretation between you and the record.
 - **Official source.** Data comes from the statutory registry of record for each jurisdiction — not a scraper third-hand.
 - **No intermediaries.** No third-party data warehouse, no nightly scrape, no translation layer between your AI and the registry.
-- **Free for anonymous use.** No API key, no account, no installation — add the server URL and it works. Sign in (passwordless, email magic link) for higher rate limits and multi-country search fan-out. See [Tiers](https://openregistry.sophymarine.com/tiers).
+- **Free for anonymous use.** No API key, no account, no installation — add the server URL and it works. Sign in (passwordless, email magic link) for higher rate limits and multi-country search fan-out. See [Tiers](2).
 
 ## Jurisdictions covered
 
@@ -54,7 +54,7 @@ Hosted endpoint: **`https://openregistry.sophymarine.com/mcp`**
 | `list_jurisdictions` | Discover the live capability matrix per registry. |
 | `about` | Compact capability + pricing summary. |
 
-The [hosted API reference](https://openregistry.sophymarine.com) documents per-jurisdiction coverage, identifier formats, and 501 routing for paid-upstream fallbacks.
+The [hosted API reference](3) documents per-jurisdiction coverage, identifier formats, and 501 routing for paid-upstream fallbacks.
 
 ## Connect
 
@@ -66,7 +66,7 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "openregistry": {
-      "url": "https://openregistry.sophymarine.com/mcp",
+      "url": "4",
       "transport": "http"
     }
   }
@@ -81,7 +81,7 @@ Add to `~/.cursor/mcp.json`:
 {
   "mcpServers": {
     "openregistry": {
-      "url": "https://openregistry.sophymarine.com/mcp"
+      "url": "5"
     }
   }
 }
@@ -90,7 +90,7 @@ Add to `~/.cursor/mcp.json`:
 ### Claude Code
 
 ```bash
-claude mcp add --transport http openregistry https://openregistry.sophymarine.com/mcp
+claude mcp add --transport http OpenRegistry https://openregistry.sophymarine.com/mcp
 ```
 
 ### Cline (VS Code)
@@ -100,7 +100,7 @@ Settings → Cline → MCP Servers → Add:
 ```json
 {
   "openregistry": {
-    "url": "https://openregistry.sophymarine.com/mcp",
+    "url": "7",
     "transport": "streamable-http"
   }
 }
@@ -110,7 +110,7 @@ See [`llms-install.md`](./llms-install.md) for automated installs by LLM-driven 
 
 ### Anything else speaking MCP
 
-Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow for the authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
+Streamable HTTP transport per [MCP spec 2025-06-18](8). OAuth 2.1 authorization flow for the authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
 
 ## Tiers
 
@@ -124,7 +124,7 @@ Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol
 
 All tiers receive the same unified schema and full raw upstream data. Enterprise adds synthesised source-URL / registry-name / data-license fields.
 
-Full pricing and tier details: [openregistry.sophymarine.com/tiers](https://openregistry.sophymarine.com/tiers).
+Full pricing and tier details: [openregistry.sophymarine.com/tiers](9).
 
 ## Examples
 
@@ -156,14 +156,14 @@ openregistry pops an MCP elicitation dialog showing its country guesses (`NO`, `
 
 ## Support
 
-- **Hosted app + account management**: [openregistry.sophymarine.com/account](https://openregistry.sophymarine.com/account)
-- **Tool capability matrix**: `list_jurisdictions` (or [openregistry.sophymarine.com/jurisdictions](https://openregistry.sophymarine.com/jurisdictions))
+- **Hosted app + account management**: [openregistry.sophymarine.com/account](10)
+- **Tool capability matrix**: `list_jurisdictions` (or [openregistry.sophymarine.com/jurisdictions](11))
 - **Enterprise inquiries / partnerships**: contact@sophymarine.com
-- **Status + uptime**: [openregistry.sophymarine.com/status](https://openregistry.sophymarine.com/status)
-- **This repo** is documentation only. The openregistry service implementation is closed-source; raise issues or feature requests here for the *integration experience* (documentation, examples, install flows).
+- **Status + uptime**: [openregistry.sophymarine.com/status](12)
+- **This repo** is documentation only. The OpenRegistry service implementation is closed-source; raise issues or feature requests here for the *integration experience* (documentation, examples, install flows).
 
 ---
 
-**openregistry is a platform by [sophymarine](https://sophymarine.com).**
+**OpenRegistry is a platform by [sophymarine](13).**
 
-© 2026 sophymarine. The openregistry name and logo are trademarks of sophymarine. Documentation in this repository is published under CC-BY-4.0.
+© 2026 Sophymarine. The OpenRegistry name and logo are trademarks of Sophymarine. Documentation in this repository is published under CC-BY-4.0.
