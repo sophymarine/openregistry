@@ -108,6 +108,17 @@ See [`llms-install.md`](./llms-install.md) for automated LLM-driven installs.
 
 Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow for authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
 
+### AI agent frameworks (code samples)
+
+Every major agent framework ships a generic MCP adapter, so OpenRegistry's 27 tools + 10 prompt workflows plug in with zero framework-specific code. Minimum working example per framework:
+
+- **LangChain / LangGraph** (Python) → [openregistry.sophymarine.com/docs/integrations/langchain](https://openregistry.sophymarine.com/docs/integrations/langchain)
+- **LlamaIndex** (Python) → [/docs/integrations/llamaindex](https://openregistry.sophymarine.com/docs/integrations/llamaindex)
+- **CrewAI** (Python) → [/docs/integrations/crewai](https://openregistry.sophymarine.com/docs/integrations/crewai)
+- **Haystack** (Python) → [/docs/integrations/haystack](https://openregistry.sophymarine.com/docs/integrations/haystack)
+- **AutoGen (Microsoft)** (Python) → [/docs/integrations/autogen](https://openregistry.sophymarine.com/docs/integrations/autogen)
+- **Vercel AI SDK** (TypeScript) → [/docs/integrations/vercel-ai-sdk](https://openregistry.sophymarine.com/docs/integrations/vercel-ai-sdk)
+
 ## Tiers
 
 | Tier | Price | Rate limit | Cross-border fan-out | Source URLs |
