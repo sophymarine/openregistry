@@ -1,6 +1,12 @@
 # OpenRegistry
 
+[![Official MCP Registry](https://img.shields.io/badge/Official%20MCP%20Registry-io.github.sophymarine%2Fopenregistry-2088FF?logo=anthropic&logoColor=white)](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.sophymarine%2Fopenregistry)
+[![Glama Score](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/score.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-00A86B.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 **Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
+
+[![openregistry MCP server](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/card.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
 
 OpenRegistry is your AI agent's live hotline to 27 national company registries — UK Companies House, France RNE, Germany Handelsregister, Italy InfoCamere (via EU BRIS), Spain BORME, Poland KRS, Korea OpenDART, Canada CBCA, 10 US states, and more.
 
