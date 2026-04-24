@@ -42,6 +42,10 @@ We publish 10 professional Claude Agent Skills for the most common OpenRegistry 
 
 See [`skills/README.md`](./skills/README.md) for the skillpack overview.
 
+### Same 10 workflows, also as MCP prompts
+
+Every skill above is also served by the MCP server as a named **prompt** — so any MCP-compatible client (Claude Desktop, Cursor, Cline, Goose, Zed, …) shows them in its prompt picker without installing skill files. Call `prompts/list` to discover them, `prompts/get` to invoke. Same names: `kyc_cross_border_due_diligence`, `ubo_cross_border_chain_walker`, `director_search_pep_screening`, `live_company_accounts_xbrl`, `corporate_filing_monitor`, `global_company_name_availability`, `industry_competitor_search`, `shell_company_detector`, `phoenix_company_radar`, `sector_gatekeeper_list`.
+
 ## Connect
 
 ### Claude Desktop
