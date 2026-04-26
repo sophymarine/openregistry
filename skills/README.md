@@ -36,6 +36,49 @@ Current AI company-data skills pull from commercial aggregators (Bureau van Dijk
 
 ⭐ Skill 2 is the flagship demo — it exercises all 6 pillars in one workflow.
 
+
+## Per-country single-jurisdiction lookups (30)
+
+For users whose query is explicitly bound to one country, these thin per-jurisdiction skills wrap the OpenRegistry MCP toolset with the country's native registry name, ID format, and quirks surfaced in the frontmatter — so a Claude / Cursor / Cline agent picks them up the moment the user mentions e.g. `Companies House`, `Handelsregister`, `BORME`, `OpenDART`, `ARES`, or `Sirene` directly.
+
+Use these instead of the cross-border [Cross-Border UBO Chain Walker](./ubo-cross-border-chain-walker/SKILL.md) when the user has already narrowed to a single jurisdiction.
+
+| # | Country / registry | Skill |
+|---:|---|---|
+| 11 | Australia (ABR / ASIC Lookup) | [`australia-abr`](./australia-abr/SKILL.md) |
+| 12 | Belgium (KBO/BCE Lookup) | [`belgium-kbo-bce`](./belgium-kbo-bce/SKILL.md) |
+| 13 | Canada (British Columbia) (OrgBook BC Lookup) | [`canada-bc-orgbook`](./canada-bc-orgbook/SKILL.md) |
+| 14 | Canada (Federal) (Corporations Canada Lookup) | [`canada-cbca-federal`](./canada-cbca-federal/SKILL.md) |
+| 15 | Canada (Northwest Territories) (CROS-RSEL NT Lookup) | [`canada-nt-cros`](./canada-nt-cros/SKILL.md) |
+| 16 | Cayman Islands (CIMA Lookup) | [`cayman-cima`](./cayman-cima/SKILL.md) |
+| 17 | Cyprus (DRCOR Cyprus Lookup) | [`cyprus-drcor`](./cyprus-drcor/SKILL.md) |
+| 18 | Czechia (ARES Lookup) | [`czechia-ares`](./czechia-ares/SKILL.md) |
+| 19 | Finland (PRH (YTJ) Lookup) | [`finland-prh`](./finland-prh/SKILL.md) |
+| 20 | France (RNE / Sirene Lookup) | [`france-rne-sirene`](./france-rne-sirene/SKILL.md) |
+| 21 | Germany (Handelsregister Lookup) | [`germany-handelsregister`](./germany-handelsregister/SKILL.md) |
+| 22 | Hong Kong SAR (HK CR Lookup) | [`hong-kong-companies-registry`](./hong-kong-companies-registry/SKILL.md) |
+| 23 | Iceland (Fyrirtækjaskrá Lookup) | [`iceland-fyrirtaekjaskra`](./iceland-fyrirtaekjaskra/SKILL.md) |
+| 24 | Ireland (CRO Lookup) | [`ireland-cro`](./ireland-cro/SKILL.md) |
+| 25 | Isle of Man (IoM CR Lookup) | [`isle-of-man-companies-registry`](./isle-of-man-companies-registry/SKILL.md) |
+| 26 | Italy (Registro Imprese (BRIS) Lookup) | [`italy-infocamere-bris`](./italy-infocamere-bris/SKILL.md) |
+| 27 | Liechtenstein (Liechtenstein HR Lookup) | [`liechtenstein-handelsregister`](./liechtenstein-handelsregister/SKILL.md) |
+| 28 | Malaysia (SSM Lookup) | [`malaysia-ssm`](./malaysia-ssm/SKILL.md) |
+| 29 | Mexico (PSM Mexico Lookup) | [`mexico-psm`](./mexico-psm/SKILL.md) |
+| 30 | Monaco (RCI Monaco Lookup) | [`monaco-rci`](./monaco-rci/SKILL.md) |
+| 31 | Netherlands (KVK Lookup) | [`netherlands-kvk`](./netherlands-kvk/SKILL.md) |
+| 32 | New Zealand (NZ Companies Office Lookup) | [`new-zealand-companies-office`](./new-zealand-companies-office/SKILL.md) |
+| 33 | Norway (Brreg Lookup) | [`norway-brreg`](./norway-brreg/SKILL.md) |
+| 34 | Poland (KRS Lookup) | [`poland-krs`](./poland-krs/SKILL.md) |
+| 35 | Russia (ЕГРЮЛ (FNS) Lookup) | [`russia-egrul`](./russia-egrul/SKILL.md) |
+| 36 | South Korea (OPENDART (전자공시) Lookup) | [`korea-opendart`](./korea-opendart/SKILL.md) |
+| 37 | Spain (BORME Lookup) | [`spain-borme`](./spain-borme/SKILL.md) |
+| 38 | Switzerland (Zefix Lookup) | [`switzerland-zefix`](./switzerland-zefix/SKILL.md) |
+| 39 | Taiwan (GCIS (商工登記) Lookup) | [`taiwan-gcis`](./taiwan-gcis/SKILL.md) |
+| 40 | United Kingdom (Companies House Lookup) | [`uk-companies-house`](./uk-companies-house/SKILL.md) |
+
+Each per-country skill is a thin frontmatter wrapper. The underlying MCP tools and their behaviour are the same as the cross-border skills — the per-country variants exist purely to give agents a clean trigger when the user names the country or its native registry directly.
+
+
 ## Installation
 
 ### Claude Code
