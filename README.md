@@ -6,6 +6,14 @@
 
 **Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
 
+<p align="center">
+  <a href="https://openregistry.sophymarine.com">
+    <img src="./brand/demo.svg" alt="OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it" width="900">
+  </a>
+</p>
+
+> **Above:** an AI agent walks the shareholders of *Iceland Foods Ltd* through 4 UK holding companies — *WD FF MIDCO → ICELAND VLNCO → LANNIS → WD FF LIMITED* — and surfaces the 8 individuals who actually own the chain (Tarsem Dhaliwal **41.35%** as the largest shareholder, Walker family **51.31%** combined). Every share count, every percentage, read verbatim from the registry's own CS01 PDFs.
+
 [![openregistry MCP server](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/card.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
 
 OpenRegistry is your AI agent's live hotline to 27 national company registries — UK Companies House, France RNE, Germany Handelsregister, Italy InfoCamere (via EU BRIS), Spain BORME, Poland KRS, Korea OpenDART, Canada CBCA, 10 US states, and more.
