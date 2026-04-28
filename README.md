@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://openregistry.sophymarine.com">
-    <img src="./brand/demo.svg" alt="OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it" width="900">
+    <img src="https://raw.githubusercontent.com/sophymarine/openregistry/main/brand/demo.svg" alt="OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it" width="900">
   </a>
 </p>
 
