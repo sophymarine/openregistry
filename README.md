@@ -33,6 +33,206 @@ A platform by [Sophymarine](https://sophymarine.com).
 | **5. Stable** | Production-grade reliability, running on Cloudflare Workers' global edge + a warm pool of per-jurisdiction workers for stateful registries. |
 | **6. Cross-border** | Chain queries across 27 registries in a single prompt. Walk UK Ltd → LU SARL → KY LP → individual without leaving the conversation. |
 
+## How OpenRegistry differs
+
+|  | OpenRegistry | OpenCorporates | Companies House API direct | Bureau van Dijk Orbis |
+|---|:---:|:---:|:---:|:---:|
+| Coverage | **27 national registries** | ~140, mostly aggregated from upstream sources | UK only | ~430M companies, aggregated |
+| Data freshness | **Live** — every call hits upstream | Scrape-and-cache (hours–days lag) | Live | 7-day to quarterly refresh |
+| Field shape | **Verbatim upstream payload** + unified envelope | Normalised to OC's own schema | Per-registry CH schema | BvD's own schema |
+| Source identifier preserved | **Yes** — registry URL reconstructable from response | OC ID is primary; mapping back is lossy | Native | BvD ID is primary |
+| Filing PDFs / iXBRL bytes | **Returned raw** | Metadata only; full bytes paywalled | Native | Paywalled |
+| Cross-border chain walking | **One MCP prompt, ≤30 jurisdictions** | Manual ID-stitching across countries | Out of scope (UK only) | Limited to BvD-mastered entities |
+| Authentication | OAuth 2.1 + DCR; **anonymous tier free** | API key (signup required) | API key (signup required) | Per-seat license, **$30k–$50k+/yr** |
+| Self-serve free tier | **20 req/min/IP — all tools, all jurisdictions** | Free for non-commercial only, throttled | Free, single-jurisdiction | None |
+| Made for AI agents | **MCP-native, JSON-RPC over Streamable HTTP** | REST; no MCP wrapper | REST; no MCP wrapper | REST; no MCP wrapper |
+
+**One-liner.** OpenCorporates and BvD are *aggregators* that re-shape and cache; CH-direct is single-jurisdiction. OpenRegistry is the layer between an AI agent and the original government APIs — verbatim, live, multi-country, no API key for the free tier.
+
+Where OpenRegistry deliberately doesn't have data (statutorily restricted BO registers post-CJEU C-37/20: DE, ES, IT, NL, LU, AT, MT, PT), the response carries a structured `alternative_url` pointing at the AML-obliged-only statutory portal. We don't pretend to have data we don't.
+
+## Quick example calls
+
+Three full request → response examples for the most common tools. All three reproducible against the free anonymous tier — no signup, no API key. Calls are JSON-RPC over MCP Streamable HTTP at `https://openregistry.sophymarine.com/mcp`; for brevity we show the tool name + arguments + the unwrapped response.
+
+### 1. `search_companies` — find a UK company
+
+```jsonc
+// Request
+{
+  "name": "search_companies",
+  "arguments": { "jurisdiction": "GB", "query": "Monzo Bank", "limit": 5 }
+}
+
+// Response (truncated to 1 result)
+{
+  "jurisdiction": "GB",
+  "count": 5,
+  "results": [
+    {
+      "jurisdiction": "GB",
+      "company_id": "09446231",
+      "company_name": "MONZO BANK LIMITED",
+      "status": "active",
+      "incorporation_date": "2015-02-06",
+      "registered_address": "Broadwalk House, 5 Appold Street, London, England, EC2A 2AG",
+      "jurisdiction_data": {
+        "company_number": "09446231",
+        "company_status": "active",
+        "company_type": "ltd",
+        "date_of_creation": "2015-02-06",
+        "title": "MONZO BANK LIMITED",
+        "address_snippet": "Broadwalk House, 5 Appold Street, London, England, EC2A 2AG",
+        "kind": "searchresults#company",
+        "links": { "self": "/company/09446231" }
+        // ... 20+ verbatim CH fields
+      }
+    }
+  ]
+}
+```
+
+### 2. `get_persons_with_significant_control` — UK PSC for a known company
+
+```jsonc
+// Request
+{
+  "name": "get_persons_with_significant_control",
+  "arguments": { "jurisdiction": "GB", "company_id": "OC404063" }
+}
+
+// Response
+[
+  {
+    "jurisdiction": "GB",
+    "psc_id": "...",
+    "name": "[REDACTED — UK CH residential-address suppression]",
+    "kind": "individual-person-with-significant-control",
+    "nature_of_control": ["ownership-of-shares-25-to-50-percent"],
+    "notified_on": "2024-08-15",
+    "is_active": true,
+    "jurisdiction_data": {
+      "etag": "...",
+      "natures_of_control": ["ownership-of-shares-25-to-50-percent"],
+      "notified_on": "2024-08-15",
+      "country_of_residence": "United Kingdom",
+      "date_of_birth": { "month": 7, "year": 1985 },
+      "address": { "country": "United Kingdom" },
+      "links": { "self": "/company/OC404063/persons-with-significant-control/individual/..." }
+      // ... full CH PSC record
+    }
+  }
+]
+```
+
+> **PSC ≠ shareholders.** UK Companies House publishes a structured PSC register and a *separate* (filing-only) statement of capital. They disagree: a 10% shareholder appears in the statement of capital but not in PSC; a corporate trustee appears in PSC without being a shareholder. We surface both via `get_persons_with_significant_control` and `get_shareholders` respectively — see the [shareholders-vs-PSC case study](https://openregistry.sophymarine.com/docs/case-studies/iceland-foods-chain-walk).
+
+### 3. `fetch_document` — raw iXBRL annual accounts bytes
+
+```jsonc
+// Request — get the document_id from list_filings or get_financials first
+{
+  "name": "fetch_document",
+  "arguments": { "document_id": "MzQ0MTUyNDU5N2FkaXF6a2N4", "max_bytes": 5000000 }
+}
+
+// Response (metadata + base64-encoded body)
+{
+  "jurisdiction": "GB",
+  "document_id": "MzQ0MTUyNDU5N2FkaXF6a2N4",
+  "content_type": "application/xhtml+xml",
+  "size_bytes": 348721,
+  "encoding": "base64",
+  "content": "PCFET0NUWVBFIGh0bWwgUFVCTElDIC...",
+  // signed proxy URL for human download / out-of-band fetch
+  "proxy_url": "https://openregistry.sophymarine.com/document/gb/MzQ0MTUyNDU5N2FkaXF6a2N4/content?token=..."
+}
+```
+
+The `content` is the **literal iXBRL bytes** Companies House sends — your AI agent parses or re-renders as it sees fit. We don't re-encode, normalise tags, or extract figures into our own schema. Pass `format: "png"` (Browser Rendering required) to receive a rasterised page-by-page render of scanned PDFs instead.
+
+## Quotas, errors, and back-off
+
+OpenRegistry surfaces three distinct kinds of failure with structured responses so AI agents can branch on them.
+
+### Rate limits
+
+Per-IP for anonymous, per-user for signed-in. The cross-border **fan-out cap** is a separate counter that limits how many *distinct* jurisdictions a caller can hit via `search_companies` in a rolling 60-second window.
+
+When you exceed either limit, the response is HTTP `429`:
+
+```jsonc
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "code": -32000,
+    "message": "rate-limited",
+    "data": {
+      "reason": "rate-limited",
+      "retry_after_ms": 12400,
+      "scope": "ip"           // or "user" or "fanout"
+    }
+  }
+}
+```
+
+The HTTP layer also sets the standard `Retry-After: 13` header (seconds, rounded up). **Honour `retry_after_ms` exactly** — exponential back-off on top is unnecessary; the limit window is fixed-rolling, not adaptive. Fan-out cap (`scope: "fanout"`) is a 60-second rolling window — the second your oldest country falls off, you can hit a new one. Pro tier caps at 10 distinct countries / 60s, Max at 30, Enterprise unlimited.
+
+### Statutorily restricted (CJEU C-37/20 and similar)
+
+Some beneficial-ownership registers became access-restricted to AML-obliged entities post-CJEU C-37/20 (DE, ES, IT, NL, LU, AT, MT, PT) and the Cayman Beneficial Ownership Transparency Act. We don't proxy these — the tool returns HTTP `501` with structured guidance:
+
+```jsonc
+{
+  "jurisdiction": "DE",
+  "error": "not_proxied_by_design",
+  "reason": "CJEU-C-37-20",
+  "alternative_url": "https://www.transparenzregister.de",
+  "alternative_access": "AML-obliged entities only (banks, lawyers, notaries, etc.)",
+  "human_message": "The German Transparency Register is statutorily gated since 22 Nov 2022."
+}
+```
+
+This is a *design* response, not a transient failure — retrying won't help. The `alternative_url` is the canonical statutory portal where qualified entities can register for access.
+
+### Upstream errors and tool-level structured 501s
+
+When the upstream registry has its own outage, we surface its error verbatim with a structured wrapper:
+
+```jsonc
+{
+  "jurisdiction": "ES",
+  "error": "upstream_error",
+  "upstream_status": 524,
+  "human_message": "Spain BORME upstream timed out (Madrid bulletin renderer slow). Retry in 30-60s.",
+  "retry_after_ms": 45000
+}
+```
+
+Some tools also return `501` with an **alternative tool** suggestion when the upstream registry doesn't expose the requested concept (e.g. CZ political parties don't have officers in the standard sense — call `search_specialised_records` with `source="rpsh"` instead):
+
+```jsonc
+{
+  "error": "alternative_tool_required",
+  "alternative_tool": "search_specialised_records",
+  "alternative_args": { "jurisdiction": "CZ", "source": "rpsh", "...": "..." },
+  "human_message": "Czech political parties register is exposed via the RPSH sub-source."
+}
+```
+
+### Recommended client back-off
+
+| Error | Action |
+|---|---|
+| `429 rate-limited` | Sleep `retry_after_ms`, then retry once. |
+| `429 fanout` | Don't retry the same call; route the next request to a country you've already hit in the window. |
+| `501 not_proxied_by_design` | Don't retry. Surface `alternative_url` to the user. |
+| `501 alternative_tool_required` | Re-issue with `alternative_tool` + `alternative_args`. |
+| `5xx upstream_error` | Sleep `retry_after_ms` if present, else 30s. Max 3 retries. |
+| `4xx not_found` | Don't retry. Re-search with `search_companies` to discover a valid id. |
+
+A reference back-off implementation is published in every framework integration guide under [`/docs/integrations`](https://openregistry.sophymarine.com/docs/integrations/langchain).
+
 ## Ready-to-use skills
 
 We publish 10 professional Claude Agent Skills for the most common OpenRegistry workflows. Drop them into your Claude Code project's `.claude/skills/` directory or into any Claude-compatible agent — invoke by intent.
