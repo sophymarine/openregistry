@@ -6,7 +6,7 @@
 
 **Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
 
-> **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences. Full list at [Data and licensing](#data-and-licensing).
+> **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences.
 
 [![OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it](https://raw.githubusercontent.com/sophymarine/openregistry/main/brand/demo.svg)](https://openregistry.sophymarine.com)
 
