@@ -6,6 +6,8 @@
 
 **Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
 
+> **Data licensed from** 🇬🇧 [UK Companies House (OGL v3.0)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland (PSI Directive)](https://www.cro.ie/) · 🇳🇴 [Brønnøysund (NLOD 2.0)](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix (OGD Open Use)](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences. Full list at [Data and licensing](#data-and-licensing).
+
 [![OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it](https://raw.githubusercontent.com/sophymarine/openregistry/main/brand/demo.svg)](https://openregistry.sophymarine.com)
 
 > **Above:** an AI agent walks the shareholders of *Iceland Foods Ltd* through 4 UK holding companies — *WD FF MIDCO → ICELAND VLNCO → LANNIS → WD FF LIMITED* — and surfaces the 8 individuals who actually own the chain (Tarsem Dhaliwal **41.35%** as the largest shareholder, Walker family **51.31%** combined). Every share count, every percentage, read verbatim from the registry's own CS01 PDFs.
