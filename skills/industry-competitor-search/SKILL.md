@@ -23,6 +23,20 @@ t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.soph
 
 # Use node to do the insert reliably
 node <<'NODE_INSERT'
+## Prerequisite: configure the OpenRegistry MCP server
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+Free anonymous tier, no API key required. Restart your client after adding. If the tool calls below return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+
 ## What you get
 
 - **Parallel search across multiple government registries** (anon/free 3 countries / 60s; Pro 10; Max 30; Enterprise unlimited).

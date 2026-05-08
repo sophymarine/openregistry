@@ -23,6 +23,20 @@ t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.soph
 
 # Use node to do the insert reliably
 node <<'NODE_INSERT'
+## Prerequisite: configure the OpenRegistry MCP server
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+Free anonymous tier, no API key required. Restart your client after adding. If the tool calls below return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+
 ## What you get
 
 - **Live filing history** from the government registry's own filings index — UK Companies House filing-history API, Korea DART DS001 list, Mexico PSM statutory publications, Iceland Skatturinn typeid-1/2/3 stream.
