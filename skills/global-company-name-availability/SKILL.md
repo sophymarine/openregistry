@@ -8,6 +8,8 @@ description: Check whether a proposed company name is free to register across 10
 **Run a name across 10+ government company registers in one prompt. Get exact-match / cooling-off / confusingly-similar results per jurisdiction.**
 
 
+## Prerequisite: configure the OpenRegistry MCP server
+
 This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
 
 ```json
@@ -18,11 +20,8 @@ This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profil
 }
 ```
 
-t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
-'
+Free anonymous tier, no API key required. Restart your client after adding. If the tool calls below return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
 
-# Use node to do the insert reliably
-node <<'NODE_INSERT'
 ## What you get
 
 - **Live name search** against each target country's statutory register — no commercial-data-provider lag, no stale index.
