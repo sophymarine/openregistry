@@ -8,6 +8,8 @@ description: Detect shell-company signals from live government registry data —
 **Score shell-probability from live government registry data — no aggregator "shell flags", the actual raw signals.**
 
 
+## Prerequisite: configure the OpenRegistry MCP server
+
 This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
 
 ```json
@@ -18,11 +20,8 @@ This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profil
 }
 ```
 
-t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
-'
+Free anonymous tier, no API key required. Restart your client after adding. If the tool calls below return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
 
-# Use node to do the insert reliably
-node <<'NODE_INSERT'
 ## What you get
 
 - **Live multi-signal probe** of every well-known shell-entity indicator, pulled from the government register at query time.

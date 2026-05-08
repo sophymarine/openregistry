@@ -8,6 +8,8 @@ description: Live stream of material filings on any company — director changes
 **The last N days of government filings on your watchlist — categorised, fetched, flagged.**
 
 
+## Prerequisite: configure the OpenRegistry MCP server
+
 This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
 
 ```json
@@ -18,11 +20,8 @@ This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profil
 }
 ```
 
-t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
-'
+Free anonymous tier, no API key required. Restart your client after adding. If the tool calls below return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
 
-# Use node to do the insert reliably
-node <<'NODE_INSERT'
 ## What you get
 
 - **Live filing history** from the government registry's own filings index — UK Companies House filing-history API, Korea DART DS001 list, Mexico PSM statutory publications, Iceland Skatturinn typeid-1/2/3 stream.
