@@ -7,6 +7,22 @@ description: Find every company operating in a sector across 27 national governm
 
 **Map an industry across jurisdictions in one prompt — live government data, no aggregator lag.**
 
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+'
+
+# Use node to do the insert reliably
+node <<'NODE_INSERT'
 ## What you get
 
 - **Parallel search across multiple government registries** (anon/free 3 countries / 60s; Pro 10; Max 30; Enterprise unlimited).
