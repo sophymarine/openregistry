@@ -7,6 +7,22 @@ description: Map every company a person has been a director of — live, direct 
 
 **From a single name to the full corporate footprint, live from the government officer register.**
 
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+'
+
+# Use node to do the insert reliably
+node <<'NODE_INSERT'
 ## What you get
 
 - **Live officer search** across UK Companies House, France RNE, Taiwan GCIS — the 3 jurisdictions that publish free cross-company officer indexes.
