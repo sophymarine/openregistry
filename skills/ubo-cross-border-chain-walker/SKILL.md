@@ -7,6 +7,22 @@ description: Unmask the real person behind any company. Walks ownership chains a
 
 **Walk the ownership chain across jurisdictions until you reach the real individual — or a transparent AML gate.**
 
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+'
+
+# Use node to do the insert reliably
+node <<'NODE_INSERT'
 ## What you get
 
 - **Live government queries at every hop.** Each company in the chain is looked up in its home country's statutory register at the moment you ask. No cache layer, no nightly scrape, no 6-24 hour stale data.

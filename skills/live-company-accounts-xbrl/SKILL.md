@@ -7,6 +7,22 @@ description: Pull the most recent statutory financial statements for any company
 
 **The actual statutory filing bytes — as the company filed them with the government, not an aggregator's summary.**
 
+
+This skill calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc). Add the server to your AI client config before invoking:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+t wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+'
+
+# Use node to do the insert reliably
+node <<'NODE_INSERT'
 ## What you get
 
 - **Live document retrieval** from the government filing archive — UK Companies House document API, Korea DART DS003 XBRL bundle, Iceland Skatturinn free-PDF cart, Mexico PSM folio de publicación.
