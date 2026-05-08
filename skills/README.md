@@ -19,6 +19,20 @@ Current AI company-data skills pull from commercial aggregators (Bureau van Dijk
 | **Stable** | Production-grade on CF Workers' global edge. |
 | **Cross-border** | Walk ownership chains across 27 jurisdictions in one prompt. |
 
+## Prerequisite: configure the OpenRegistry MCP server
+
+Every skill in this pack calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, …). Add the server to your AI client config **before** dropping any skill into your skills directory:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": { "url": "https://openregistry.sophymarine.com/mcp" }
+  }
+}
+```
+
+Free anonymous tier, no API key required. Restart your client after adding. If a skill's tool calls return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+
 ## Catalogue
 
 | # | Skill | Outcome in one prompt |
