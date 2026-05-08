@@ -362,6 +362,35 @@ Enterprise tier pre-synthesises `source_url` / `registry_url` / `registry_name` 
 - **Status + uptime**: [openregistry.sophymarine.com/status](https://openregistry.sophymarine.com/status)
 - **This repo** is documentation only. The OpenRegistry service implementation is closed-source; raise issues here for the *integration experience* (documentation, examples, install flows).
 
+## Security
+
+Found a vulnerability? Please email `security@sophymarine.com` rather than opening a public issue. See [SECURITY.md](./SECURITY.md) for the full reporting policy, scope, and safe-harbor terms.
+
+## Code of Conduct
+
+Participation in this project is governed by our [Code of Conduct](./CODE_OF_CONDUCT.md), adapted from the Contributor Covenant 2.1. Report issues to `conduct@sophymarine.com`.
+
+## Contributing
+
+Issues and pull requests are welcome for:
+
+- Bridge bugs (`server.mjs`)
+- Documentation improvements (README, llms-install.md, GEMINI.md)
+- Skill / prompt refinements (`skills/`, `commands/`, `.claude-plugin/`)
+- Brand assets and metadata (`brand/`, `glama.json`, `.mcp.json`, `gemini-extension.json`)
+
+The OpenRegistry service implementation (jurisdiction adapters, MCP server, billing, auth) is closed-source and not accepted via PR. For tool / behavior requests against the hosted service, open an issue describing the use case.
+
+## Changelog
+
+Tagged releases live on the [GitHub Releases](https://github.com/sophymarine/openregistry/releases) page. Versions follow [SemVer](https://semver.org/) — patch for fixes, minor for additive changes, major for breaking changes to the bridge protocol or tool surface contract.
+
+## License
+
+Documentation, skills, and brand assets in this repository are released under [CC-BY-4.0](./LICENSE) — you may share and adapt the material for any purpose with attribution. The `openregistry` stdio bridge (`server.mjs`) is also released under CC-BY-4.0 for consistency. The hosted MCP service implementation is **not** open-source and is operated under separate commercial terms; see the [Tiers](#tiers) section.
+
+See [NOTICE.md](./NOTICE.md) for third-party attribution.
+
 ---
 
 **OpenRegistry is a platform by [Sophymarine](https://sophymarine.com).**

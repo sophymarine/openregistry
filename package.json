@@ -1,6 +1,6 @@
 {
   "name": "openregistry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stdio MCP bridge for the hosted OpenRegistry service",
   "type": "module",
   "bin": {
