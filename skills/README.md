@@ -45,36 +45,36 @@ Use these instead of the cross-border [Cross-Border UBO Chain Walker](./ubo-cros
 
 | # | Country / registry | Skill |
 |---:|---|---|
-| 11 | Australia (ABR / ASIC Lookup) | [`australia-abr`](./australia-abr/SKILL.md) |
-| 12 | Belgium (KBO/BCE Lookup) | [`belgium-kbo-bce`](./belgium-kbo-bce/SKILL.md) |
-| 13 | Canada (British Columbia) (OrgBook BC Lookup) | [`canada-bc-orgbook`](./canada-bc-orgbook/SKILL.md) |
-| 14 | Canada (Federal) (Corporations Canada Lookup) | [`canada-cbca-federal`](./canada-cbca-federal/SKILL.md) |
-| 15 | Canada (Northwest Territories) (CROS-RSEL NT Lookup) | [`canada-nt-cros`](./canada-nt-cros/SKILL.md) |
-| 16 | Cayman Islands (CIMA Lookup) | [`cayman-cima`](./cayman-cima/SKILL.md) |
-| 17 | Cyprus (DRCOR Cyprus Lookup) | [`cyprus-drcor`](./cyprus-drcor/SKILL.md) |
-| 18 | Czechia (ARES Lookup) | [`czechia-ares`](./czechia-ares/SKILL.md) |
-| 19 | Finland (PRH (YTJ) Lookup) | [`finland-prh`](./finland-prh/SKILL.md) |
-| 20 | France (RNE / Sirene Lookup) | [`france-rne-sirene`](./france-rne-sirene/SKILL.md) |
-| 21 | Germany (Handelsregister Lookup) | [`germany-handelsregister`](./germany-handelsregister/SKILL.md) |
-| 22 | Hong Kong SAR (HK CR Lookup) | [`hong-kong-companies-registry`](./hong-kong-companies-registry/SKILL.md) |
-| 23 | Iceland (Fyrirtækjaskrá Lookup) | [`iceland-fyrirtaekjaskra`](./iceland-fyrirtaekjaskra/SKILL.md) |
-| 24 | Ireland (CRO Lookup) | [`ireland-cro`](./ireland-cro/SKILL.md) |
-| 25 | Isle of Man (IoM CR Lookup) | [`isle-of-man-companies-registry`](./isle-of-man-companies-registry/SKILL.md) |
-| 26 | Italy (Registro Imprese (BRIS) Lookup) | [`italy-infocamere-bris`](./italy-infocamere-bris/SKILL.md) |
-| 27 | Liechtenstein (Liechtenstein HR Lookup) | [`liechtenstein-handelsregister`](./liechtenstein-handelsregister/SKILL.md) |
-| 28 | Malaysia (SSM Lookup) | [`malaysia-ssm`](./malaysia-ssm/SKILL.md) |
-| 29 | Mexico (PSM Mexico Lookup) | [`mexico-psm`](./mexico-psm/SKILL.md) |
-| 30 | Monaco (RCI Monaco Lookup) | [`monaco-rci`](./monaco-rci/SKILL.md) |
-| 31 | Netherlands (KVK Lookup) | [`netherlands-kvk`](./netherlands-kvk/SKILL.md) |
-| 32 | New Zealand (NZ Companies Office Lookup) | [`new-zealand-companies-office`](./new-zealand-companies-office/SKILL.md) |
-| 33 | Norway (Brreg Lookup) | [`norway-brreg`](./norway-brreg/SKILL.md) |
-| 34 | Poland (KRS Lookup) | [`poland-krs`](./poland-krs/SKILL.md) |
-| 35 | Russia (ЕГРЮЛ (FNS) Lookup) | [`russia-egrul`](./russia-egrul/SKILL.md) |
-| 36 | South Korea (OPENDART (전자공시) Lookup) | [`korea-opendart`](./korea-opendart/SKILL.md) |
-| 37 | Spain (BORME Lookup) | [`spain-borme`](./spain-borme/SKILL.md) |
-| 38 | Switzerland (Zefix Lookup) | [`switzerland-zefix`](./switzerland-zefix/SKILL.md) |
-| 39 | Taiwan (GCIS (商工登記) Lookup) | [`taiwan-gcis`](./taiwan-gcis/SKILL.md) |
-| 40 | United Kingdom (Companies House Lookup) | [`uk-companies-house`](./uk-companies-house/SKILL.md) |
+| 11 | Australia (ABR / ASIC Lookup) | [`australia-abr`](./per-country/australia-abr/SKILL.md) |
+| 12 | Belgium (KBO/BCE Lookup) | [`belgium-kbo-bce`](./per-country/belgium-kbo-bce/SKILL.md) |
+| 13 | Canada (British Columbia) (OrgBook BC Lookup) | [`canada-bc-orgbook`](./per-country/canada-bc-orgbook/SKILL.md) |
+| 14 | Canada (Federal) (Corporations Canada Lookup) | [`canada-cbca-federal`](./per-country/canada-cbca-federal/SKILL.md) |
+| 15 | Canada (Northwest Territories) (CROS-RSEL NT Lookup) | [`canada-nt-cros`](./per-country/canada-nt-cros/SKILL.md) |
+| 16 | Cayman Islands (CIMA Lookup) | [`cayman-cima`](./per-country/cayman-cima/SKILL.md) |
+| 17 | Cyprus (DRCOR Cyprus Lookup) | [`cyprus-drcor`](./per-country/cyprus-drcor/SKILL.md) |
+| 18 | Czechia (ARES Lookup) | [`czechia-ares`](./per-country/czechia-ares/SKILL.md) |
+| 19 | Finland (PRH (YTJ) Lookup) | [`finland-prh`](./per-country/finland-prh/SKILL.md) |
+| 20 | France (RNE / Sirene Lookup) | [`france-rne-sirene`](./per-country/france-rne-sirene/SKILL.md) |
+| 21 | Germany (Handelsregister Lookup) | [`germany-handelsregister`](./per-country/germany-handelsregister/SKILL.md) |
+| 22 | Hong Kong SAR (HK CR Lookup) | [`hong-kong-companies-registry`](./per-country/hong-kong-companies-registry/SKILL.md) |
+| 23 | Iceland (Fyrirtækjaskrá Lookup) | [`iceland-fyrirtaekjaskra`](./per-country/iceland-fyrirtaekjaskra/SKILL.md) |
+| 24 | Ireland (CRO Lookup) | [`ireland-cro`](./per-country/ireland-cro/SKILL.md) |
+| 25 | Isle of Man (IoM CR Lookup) | [`isle-of-man-companies-registry`](./per-country/isle-of-man-companies-registry/SKILL.md) |
+| 26 | Italy (Registro Imprese (BRIS) Lookup) | [`italy-infocamere-bris`](./per-country/italy-infocamere-bris/SKILL.md) |
+| 27 | Liechtenstein (Liechtenstein HR Lookup) | [`liechtenstein-handelsregister`](./per-country/liechtenstein-handelsregister/SKILL.md) |
+| 28 | Malaysia (SSM Lookup) | [`malaysia-ssm`](./per-country/malaysia-ssm/SKILL.md) |
+| 29 | Mexico (PSM Mexico Lookup) | [`mexico-psm`](./per-country/mexico-psm/SKILL.md) |
+| 30 | Monaco (RCI Monaco Lookup) | [`monaco-rci`](./per-country/monaco-rci/SKILL.md) |
+| 31 | Netherlands (KVK Lookup) | [`netherlands-kvk`](./per-country/netherlands-kvk/SKILL.md) |
+| 32 | New Zealand (NZ Companies Office Lookup) | [`new-zealand-companies-office`](./per-country/new-zealand-companies-office/SKILL.md) |
+| 33 | Norway (Brreg Lookup) | [`norway-brreg`](./per-country/norway-brreg/SKILL.md) |
+| 34 | Poland (KRS Lookup) | [`poland-krs`](./per-country/poland-krs/SKILL.md) |
+| 35 | Russia (ЕГРЮЛ (FNS) Lookup) | [`russia-egrul`](./per-country/russia-egrul/SKILL.md) |
+| 36 | South Korea (OPENDART (전자공시) Lookup) | [`korea-opendart`](./per-country/korea-opendart/SKILL.md) |
+| 37 | Spain (BORME Lookup) | [`spain-borme`](./per-country/spain-borme/SKILL.md) |
+| 38 | Switzerland (Zefix Lookup) | [`switzerland-zefix`](./per-country/switzerland-zefix/SKILL.md) |
+| 39 | Taiwan (GCIS (商工登記) Lookup) | [`taiwan-gcis`](./per-country/taiwan-gcis/SKILL.md) |
+| 40 | United Kingdom (Companies House Lookup) | [`uk-companies-house`](./per-country/uk-companies-house/SKILL.md) |
 
 Each per-country skill is a thin frontmatter wrapper. The underlying MCP tools and their behaviour are the same as the cross-border skills — the per-country variants exist purely to give agents a clean trigger when the user names the country or its native registry directly.
 
