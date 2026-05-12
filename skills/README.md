@@ -1,6 +1,6 @@
 # OpenRegistry Skillpack
 
-**5 Claude Agent Skills. Live, unmodified government company records.**
+**4 Claude Agent Skills. Live, unmodified government company records.**
 
 This skillpack turns [OpenRegistry](https://openregistry.sophymarine.com) — a free remote MCP server by [Sophymarine](https://sophymarine.com) — into an AI agent toolkit for company intelligence, KYB, AML triage, and corporate investigation.
 
@@ -37,9 +37,8 @@ Free anonymous tier, no API key required. Restart your client after adding. If a
 |---|---|---|
 | 1 | [Company Profile](./company-profile/SKILL.md) | Identity + directors + shareholders + charges for one company. |
 | 2 | [Read Filing](./read-filing/SKILL.md) | Pull a specific filing (accounts / charges / officers / insolvency) and read the raw bytes. |
-| 3 | [Industry Scan](./industry-scan/SKILL.md) | Find every company in a sector across N national registries in parallel. |
-| 4 | [Director Search](./director-search/SKILL.md) | Find a person across the GB / FR / TW officer registers, map their appointments. |
-| 5 | [Filing Monitor](./filing-monitor/SKILL.md) | Watch the last N days of filings on a company or watchlist; flag material events. |
+| 3 | [Director Search](./director-search/SKILL.md) | Find a person across the GB / FR / TW officer registers, map their appointments. |
+| 4 | [Filing Monitor](./filing-monitor/SKILL.md) | Watch the last N days of filings on a company or watchlist; flag material events. |
 
 Country-by-country reference skills live under [./per-country](./per-country).
 
