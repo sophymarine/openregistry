@@ -4,6 +4,7 @@
 [![Glama Score](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/score.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
 [![Cursor Directory](https://img.shields.io/badge/Cursor%20Directory-openregistry-000000?style=flat&logo=cursor&logoColor=white)](https://cursor.directory/plugins/openregistry)
 [![PulseMCP](https://img.shields.io/badge/PulseMCP-openregistry-7C3AED?style=flat&logoColor=white)](https://www.pulsemcp.com/servers/sophymarine-openregistry)
+[![Smithery](https://img.shields.io/badge/Smithery-openregistry-FF6B35?style=flat&logoColor=white)](https://smithery.ai/servers/sophymarine/openregistry)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-D22128.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 **Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
