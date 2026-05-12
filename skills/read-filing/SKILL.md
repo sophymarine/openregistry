@@ -1,5 +1,5 @@
 ---
-name: Read Filing
+name: read-filing
 description: "Pull and read a specific government filing — annual accounts, change of officers, charge registration, etc. — as the raw bytes the company submitted to the registry. iXBRL / XBRL / PDF / JSON supported, page navigation for oversized PDFs. Use this when the user asks to \"read the latest accounts\", \"fetch a filing\", \"get the annual report\", \"open the charge document\", or any phrase that implies the content of a specific filing."
 ---
 
