@@ -270,24 +270,77 @@ Every skill above is also served by the MCP server as a named **prompt** — so 
 
 ## Connect
 
+OpenRegistry works with every major MCP-capable client. The same `https://openregistry.sophymarine.com/mcp` endpoint works across all of them — anonymous tier needs no signup.
+
 ### Claude Desktop
 
-Add to `claude_desktop_config.json`:
+Settings → Connectors → Add custom connector → paste `https://openregistry.sophymarine.com/mcp`.
+
+For older builds without the Connectors UI, add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "openregistry": {
-      "url": "https://openregistry.sophymarine.com/mcp",
-      "transport": "http"
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://openregistry.sophymarine.com/mcp"]
     }
   }
 }
 ```
 
+### Claude Code
+
+```bash
+claude mcp add --transport http openregistry https://openregistry.sophymarine.com/mcp
+```
+
+On Claude Code 2.1.1+ you can also use the JSON form:
+
+```bash
+claude mcp add-json openregistry '{"type":"http","url":"https://openregistry.sophymarine.com/mcp"}'
+```
+
+### Gemini CLI
+
+One-line install via the [`gemini-extension.json`](./gemini-extension.json) manifest in this repo:
+
+```bash
+gemini extensions install https://github.com/sophymarine/openregistry
+```
+
+Or add to `~/.gemini/settings.json` manually (Gemini uses `httpUrl`, not `url`):
+
+```json
+{
+  "mcpServers": {
+    "openregistry": {
+      "httpUrl": "https://openregistry.sophymarine.com/mcp"
+    }
+  }
+}
+```
+
+> Google's consumer Gemini app at gemini.google.com does not support custom MCP today — only the CLI and Gemini Enterprise (Google Cloud admin path) do.
+
+### ChatGPT
+
+Plus / Pro / Business / Enterprise / Education plans only (Free tier doesn't expose Developer Mode).
+
+1. Settings → Apps & Connectors → Advanced settings → enable **Developer Mode**.
+2. On the Connectors page, click **Create** and paste `https://openregistry.sophymarine.com/mcp`.
+
+See OpenAI's [developer-mode help article](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta).
+
+### Perplexity
+
+Pro / Max / Enterprise plans only. Settings → Connectors → Add custom remote connector → paste the URL → choose OAuth. Works in regular chat, the Comet browser, and Computer agent workflows. ([Changelog 2026-03-13](https://www.perplexity.ai/changelog/what-we-shipped---march-13-2026).)
+
 ### Cursor
 
-Add to `~/.cursor/mcp.json`:
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=openregistry&config=eyJ1cmwiOiJodHRwczovL29wZW5yZWdpc3RyeS5zb3BoeW1hcmluZS5jb20vbWNwIn0%3D)
+
+Or add to `~/.cursor/mcp.json` manually:
 
 ```json
 {
@@ -299,28 +352,79 @@ Add to `~/.cursor/mcp.json`:
 }
 ```
 
-### Claude Code
+### VS Code (1.101+, Copilot Agent mode)
 
-```bash
-claude mcp add --transport http OpenRegistry https://openregistry.sophymarine.com/mcp
-```
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=openregistry&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fopenregistry.sophymarine.com%2Fmcp%22%7D) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install_Server-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=openregistry&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fopenregistry.sophymarine.com%2Fmcp%22%7D&quality=insiders)
 
-### Cline (VS Code)
-
-Settings → Cline → MCP Servers → Add:
+Or add to `.vscode/mcp.json` (workspace) or User Settings → MCP. VS Code uses `servers` (not `mcpServers`) and requires `type: "http"`:
 
 ```json
 {
-  "openregistry": {
-    "url": "https://openregistry.sophymarine.com/mcp",
-    "transport": "streamable-http"
+  "servers": {
+    "openregistry": {
+      "type": "http",
+      "url": "https://openregistry.sophymarine.com/mcp"
+    }
+  }
+}
+```
+
+> GitHub Copilot in JetBrains, Visual Studio, Xcode, and Eclipse also supports custom MCP via the same `mcp-config.json` pattern — see [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/use-the-github-mcp-server) for the IDE-specific setup. Copilot CLI uses `~/.copilot/mcp-config.json` or the interactive `/mcp add` command.
+
+### Microsoft 365 Copilot (Word / Excel / PowerPoint / Teams / Outlook)
+
+Organization-level deployment via Microsoft Copilot Studio agent path. Requires a Microsoft 365 Copilot license.
+
+1. In **Microsoft Copilot Studio**, open or create an agent → **Tools** → **Add a tool** → **New tool** → **Model Context Protocol**.
+2. Paste `https://openregistry.sophymarine.com/mcp`, then for **Authentication** pick **OAuth 2.0 → Dynamic discovery** (OpenRegistry implements DCR with discovery — zero config).
+3. Publish the agent and submit it for admin approval. After your Global / Teams Admin approves it in the Microsoft 365 admin center, it appears in the **Agent Store** across Teams, Outlook, Word, Excel, and PowerPoint.
+
+See Microsoft's [Copilot Studio MCP docs](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent) and the [Agent Store guide](https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-agent-store).
+
+### Cline
+
+Settings → Cline → MCP Servers → Edit settings → paste into `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": {
+      "url": "https://openregistry.sophymarine.com/mcp",
+      "transport": "streamable-http"
+    }
   }
 }
 ```
 
 See [`llms-install.md`](./llms-install.md) for automated LLM-driven installs.
 
+### Windsurf
+
+Cascade panel → hammer icon (🔨) → **Configure** opens `~/.codeium/windsurf/mcp_config.json`. Add this block (note Windsurf uses `serverUrl`, not `url`), then click **Refresh** (🔄):
+
+```json
+{
+  "mcpServers": {
+    "openregistry": {
+      "serverUrl": "https://openregistry.sophymarine.com/mcp"
+    }
+  }
+}
+```
+
 ### Anything else speaking MCP
+
+Zed, Goose, Continue, and any other MCP 2025-06-18 client work with the standard config:
+
+```json
+{
+  "mcpServers": {
+    "openregistry": {
+      "url": "https://openregistry.sophymarine.com/mcp"
+    }
+  }
+}
+```
 
 Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow for authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
 
