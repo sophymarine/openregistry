@@ -1,5 +1,5 @@
 ---
-name: Company Profile
+name: company-profile
 description: "Build a full government-record profile of a company in one prompt: identity, directors, shareholders, charges. Live, direct from the national registry, raw fields preserved. Use this when the user asks to \"look up\", \"profile\", \"due diligence\", \"KYB\", \"verify\", or \"check\" a company by name or ID."
 ---
 
