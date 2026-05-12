@@ -1,6 +1,6 @@
 ---
 name: Industry Scan
-description: Find every company operating in a sector across one or more national registries, in parallel. Returns live registry candidates with optional profile enrichment. Use this when the user asks to "find all", "list companies in", "map an industry", "competitive landscape", "target list", or any phrase asking for a sector-wide enumeration of companies.
+description: "Find every company operating in a sector across one or more national registries, in parallel. Returns live registry candidates with optional profile enrichment. Use this when the user asks to \"find all\", \"list companies in\", \"map an industry\", \"competitive landscape\", \"target list\", or any phrase asking for a sector-wide enumeration of companies."
 ---
 
 # Industry Scan
