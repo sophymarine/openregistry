@@ -1,6 +1,6 @@
 ---
 name: Director Search
-description: Find a person across the national officer registers that publish cross-company indexes (GB / FR / TW). Returns officer candidates with disambiguation, then maps the companies they appear on. Use this when the user asks "is this person a director of", "all companies run by", "find <name>", "director search", or any people-centric corporate query.
+description: "Find a person across the national officer registers that publish cross-company indexes (GB / FR / TW). Returns officer candidates with disambiguation, then maps the companies they appear on. Use this when the user asks \"is this person a director of\", \"all companies run by\", \"find <name>\", \"director search\", or any people-centric corporate query."
 ---
 
 # Director Search
