@@ -1,25 +1,12 @@
 # OpenRegistry Skillpack
 
-**4 Claude Agent Skills. Live, unmodified government company records.**
+**5 Claude Agent Skills. Live, unmodified government company records.**
 
-This skillpack turns [OpenRegistry](https://openregistry.sophymarine.com) — a free remote MCP server by [Sophymarine](https://sophymarine.com) — into an AI agent toolkit for company intelligence, KYB, AML triage, and corporate investigation.
+Five narrow skills, each answering one user question with the minimum number of tool calls. Drop into any Claude-compatible agent and invoke by intent.
 
-Each skill bundles the trigger conditions and the step-by-step tool-call workflow that routes OpenRegistry's MCP tools across 30 national government company registries. Drop into any Claude-compatible agent and invoke by intent.
+## Prerequisite
 
-## Why this skillpack
-
-Most AI company-data tools pull from commercial aggregators (Bureau van Dijk, Dun & Bradstreet, OpenCorporates) whose data is 6 to 24 hours stale and reformatted. OpenRegistry calls the government's own system at the moment you ask, and returns the registry's response unmodified.
-
-| Pillar | What you get |
-|---|---|
-| Live | Real-time queries at call-time. No nightly scrape. |
-| Direct-to-government | UK Companies House, France RNE, Germany Handelsregister, Korea OpenDART, and 26 more, no middleman. |
-| Unmodified + source-linked | Raw upstream field names, raw filing bytes, every response traces back to the government record. |
-| Cross-border | Same tool surface across 30 jurisdictions. |
-
-## Prerequisite: configure the OpenRegistry MCP server
-
-Every skill in this pack calls OpenRegistry MCP tools (`search_companies`, `get_company_profile`, `list_filings`, `fetch_document`, etc.). Add the server to your AI client config before invoking any skill:
+Add the OpenRegistry MCP server to your client config once:
 
 ```json
 {
@@ -29,31 +16,30 @@ Every skill in this pack calls OpenRegistry MCP tools (`search_companies`, `get_
 }
 ```
 
-Free anonymous tier, no API key required. Restart your client after adding. If a skill's tool calls return `tool not found`, the MCP server isn't wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
+Free anonymous tier, no API key. After adding, the agent loads any of the skills below on demand.
 
 ## Catalogue
 
-| # | Skill | Outcome in one prompt |
+| # | Skill | One-line outcome |
 |---|---|---|
-| 1 | [Company Profile](./company-profile/SKILL.md) | Identity + directors + shareholders + charges for one company. |
-| 2 | [Read Filing](./read-filing/SKILL.md) | Pull a specific filing (accounts / charges / officers / insolvency) and read the raw bytes. |
-| 3 | [Director Search](./director-search/SKILL.md) | Find a person across the GB / FR / TW officer registers, map their appointments. |
-| 4 | [Filing Monitor](./filing-monitor/SKILL.md) | Watch the last N days of filings on a company or watchlist; flag material events. |
+| 1 | [find-company](./find-company/SKILL.md) | Verify a company exists; capture status, incorporation date, address, ID. |
+| 2 | [get-director-details](./get-director-details/SKILL.md) | List a company's current and historical officers with roles + dates. |
+| 3 | [get-shareholder-details](./get-shareholder-details/SKILL.md) | List a company's statutory shareholders / members / quota-holders. |
+| 4 | [get-financials](./get-financials/SKILL.md) | Pull the latest annual accounts and extract revenue, profit, assets, employees. |
+| 5 | [get-filings](./get-filings/SKILL.md) | List a company's filings (metadata); fetch a specific filing's bytes via follow-up. |
 
-Country-by-country reference skills live under [./per-country](./per-country).
+Country-by-country reference docs: [./per-country](./per-country).
 
 ## Tool surface
 
-The MCP server currently exposes 10 tools:
+These 5 skills together use the 10 MCP tools exposed at `https://openregistry.sophymarine.com/mcp`:
 
 ```
 list_jurisdictions   search_companies     search_officers
 get_company_profile  list_filings         get_shareholders
-get_officers         get_charges
-get_document_metadata fetch_document       get_document_navigation
+get_officers         get_document_metadata fetch_document
+get_document_navigation
 ```
-
-Plus 5 named workflows under [prompts](https://openregistry.sophymarine.com/docs) that mirror these skills as MCP prompt templates.
 
 ## License
 
