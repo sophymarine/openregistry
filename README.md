@@ -7,7 +7,13 @@
 [![Smithery](https://img.shields.io/badge/Smithery-openregistry-FF6B35?style=flat&logoColor=white)](https://smithery.ai/servers/sophymarine/openregistry)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-D22128.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-**Unmodified government company records, live. Cross-border ownership chain walker. 27 national registries.**
+Real-time direct access to unmodified data and raw filings of 30 official government registries via MCP.
+
+Tools: search companies, get profiles, officers, shareholders, charges, filings, and financial-statement documents.
+
+Covers UK Companies House, Ireland CRO, France RNE, Spain BORME, Italy InfoCamere, Norway Brreg, Poland KRS, Netherlands KVK, Belgium KBO, Switzerland Zefix, Finland, Czechia, Korea, Taiwan, New Zealand, Cayman Island, Australia, Canada and a lot more.
+
+Free anonymous tier; paid keys for higher quota.
 
 > **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences.
 
