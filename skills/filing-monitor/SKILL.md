@@ -1,6 +1,6 @@
 ---
 name: Filing Monitor
-description: Scan the last N days of government filings on a company (or watchlist) and surface material events: director changes, new charges, capital events, insolvency markers, name / address changes. Live filing stream, raw documents on high-severity events. Use this when the user asks to "monitor filings", "watch for changes", "alert on", "recent filings", "track corporate events", or builds a portfolio watchlist.
+description: "Scan the last N days of government filings on a company (or watchlist) and surface material events: director changes, new charges, capital events, insolvency markers, name / address changes. Live filing stream, raw documents on high-severity events. Use this when the user asks to \"monitor filings\", \"watch for changes\", \"alert on\", \"recent filings\", \"track corporate events\", or builds a portfolio watchlist."
 ---
 
 # Filing Monitor
