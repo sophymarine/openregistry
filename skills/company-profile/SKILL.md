@@ -1,60 +1,96 @@
 ---
 name: company-profile
-description: "Build a full government-record profile of a company in one prompt: identity, directors, shareholders, charges. Live, direct from the national registry, raw fields preserved. Use this when the user asks to \"look up\", \"profile\", \"due diligence\", \"KYB\", \"verify\", or \"check\" a company by name or ID."
+description: "Fetch the full government-record profile of a company in one prompt: registered identity, current and historical directors, statutory shareholders, registered charges (mortgages, secured debt). Live and direct from the national registry, raw fields preserved. Use this when the user asks to look up, profile, verify, run KYB on, do due diligence on, check, or research a specific company by name or registry ID."
+license: Apache-2.0
+compatibility: Requires the OpenRegistry MCP server (free, https://openregistry.sophymarine.com/mcp)
+metadata:
+  categories: "Compliance, Research, Business"
+  version: "1.1"
+  author: sophymarine
 ---
 
 # Company Profile
 
-**One government source of truth per company: identity + people + ownership + encumbrances.**
+**One government source of truth per company: identity, directors, shareholders, charges.**
 
-## What you get
+## When to use
 
-- **Identity** — unified `status` (active / inactive / dissolved / unknown), `incorporation_date`, `registered_address`. Raw upstream fields preserved under `jurisdiction_data`.
-- **Directors / officers** — current + (by default) historical. Role labels passed through in the registry's native language.
-- **Shareholders** — the statutory equity roster. Shape depends on legal form (private vs joint-stock).
-- **Charges** — mortgages, fixed / floating charges, pledges; chargee + creation + satisfaction.
+- User names a specific company and wants to know who runs it, who owns it, or whether it has debt secured against it
+- KYB / supplier onboarding workflows
+- Pre-investment basic diligence
+- Sanity-checking an entity referenced in a contract or email
 
-## Example prompts
+## When NOT to use
+
+- Multi-company sector scans (use [industry-scan](../industry-scan/SKILL.md))
+- Tracking changes over time (use [filing-monitor](../filing-monitor/SKILL.md))
+- Reading the actual content of a specific filing (use [read-filing](../read-filing/SKILL.md))
+- Person-first searches (use [director-search](../director-search/SKILL.md))
+
+## Example invocations
 
 ```
-Run a full profile on Tesla Inc in the UK.
-```
-
-```
-KYB check Acme S.A.S. (FR SIREN 552081317): directors, ownership, any charges.
-```
-
-```
-Look up Norwegian organisation 923609016 and tell me who runs it.
+Look up Tesla Inc in the UK
+KYB check on SIREN 552081317
+Profile Norwegian organisation 923609016 — who's on the board?
+Is Acme Trading Ltd active, and does it have any charges?
 ```
 
 ## Workflow
 
-1. **Resolve** — if the user gave a name, call `search_companies({jurisdiction, query})` and confirm via `get_company_profile`. If they gave an ID, go straight to `get_company_profile`.
-2. **Directors** — `get_officers({jurisdiction, company_id})`. Set `include_resigned: false` for currently-serving only.
-3. **Shareholders** — `get_shareholders({jurisdiction, company_id})`. Empty list or pointer-to-filing is normal for joint-stock forms; surface the disclosure flag honestly.
-4. **Charges** — `get_charges({jurisdiction, company_id})`. Empty list means no registered charges (not 404). Real-estate mortgages and movable-asset pledges sometimes live in separate registers — flag the scope when relevant.
-5. **Report** — identity · governance · ownership · encumbrances · red flags (overdue accounts, charges, dissolution attempts). Cite the registry's own ID on every fact.
+```text
+1. RESOLVE the company_id
+   - If the user gave a name:
+       search_companies({ jurisdiction, query, limit: 5 })
+       → pick the candidate whose status='active' and name best matches; surface alternatives
+   - If the user gave an ID:
+       go straight to step 2
 
-## Shareholders ≠ beneficial owners
+2. CONFIRM identity
+   get_company_profile({ jurisdiction, company_id })
+   → capture company_name, status, status_detail, incorporation_date, registered_address
 
-The shareholder roster is the statutory equity register, not the beneficial-ownership (PSC / UBO) register. The two can disagree — a 10% shareholder is on the members register but not the PSC register; a corporate trustee can be a PSC without appearing on the members register. If the user explicitly asks about "beneficial owners", "who controls", "PSC", or "UBO", note that OpenRegistry's MCP surface currently exposes shareholders only; the AML-gated PSC register is a separate system in most jurisdictions.
+3. PEOPLE
+   get_officers({ jurisdiction, company_id, include_resigned: false })
+   → current directors / secretaries / partners / officers; role labels in registry's native language
 
-## Per-country caveats
+4. OWNERSHIP
+   get_shareholders({ jurisdiction, company_id })
+   → empty list, structured roster, or pointer to filing depending on legal form
+   → if upstream returns a filing pointer, follow up with read-filing on that document_id
 
-- **Shareholders coverage varies**: private-limited / LLC forms typically disclose quota-holders publicly; joint-stock / public-limited forms keep them in a private book and may return a pointer to the relevant filing.
-- **Charges scope varies**: some jurisdictions keep real-estate mortgages and movable-asset pledges in separate registers.
-- For per-country ID format, accepted input shapes, and field catalogues call `list_jurisdictions({jurisdiction:'<CC>'})`.
+5. ENCUMBRANCES
+   get_charges({ jurisdiction, company_id })
+   → outstanding mortgages and security interests with chargee, creation date, satisfaction
 
-## You might also need
+6. REPORT to user
+   - Identity block (1 line)
+   - Governance: current directors + roles
+   - Ownership: shareholder roster OR explicit "not publicly disclosed for this legal form" note
+   - Encumbrances: each outstanding charge with chargee + amount (when disclosed)
+   - Red flags surfaced proactively: dissolved status, overdue accounts, multiple outstanding charges
+   - Every fact cites its registry identifier (company_id / officer_id / charge_id)
+```
 
-- Read a specific filing's content → [Read Filing](../read-filing/SKILL.md)
-- Watch recent filings on this company → [Filing Monitor](../filing-monitor/SKILL.md)
-- Find the same director across more companies → [Director Search](../director-search/SKILL.md)
+## Output format (recommended)
 
-## Prerequisite
+Plain-text or markdown report with sections in this order: Identity, Status, Governance, Ownership, Charges, Red flags. Always cite the registry's own identifier on every claim so a compliance officer can independently verify.
 
-This skill calls OpenRegistry MCP tools. Add the server to your AI client config first:
+## Edge cases
+
+- **Empty shareholders list** = the registry does not publicly disclose for that legal form (typical for joint-stock / public-limited companies). Say so explicitly, do not say "no shareholders".
+- **Empty charges list** = no registered charges. Say so explicitly; this is meaningful (empty is not "unknown").
+- **501 from a tool** = jurisdiction does not implement that data type; report the gap honestly rather than skipping silently.
+- **Shareholders vs beneficial owners** = two different concepts. The shareholder roster is the equity register; PSCs / UBOs sit on a separate threshold-based register that OpenRegistry's MCP surface does not currently expose. If the user explicitly asks for beneficial owners, say so.
+- **Per-country quirks** = ID format, status taxonomy, and field catalogue vary. Call `list_jurisdictions({ jurisdiction:'<CC>' })` for the per-country schema when you need detail.
+
+## Provenance
+
+Every fact in the report must be traceable back to the government record. The MCP tools return the registry's own `company_id`, `officer_id`, and `charge_id` on every row. Quote those identifiers verbatim in the report.
+
+## Setup
+
+This skill calls OpenRegistry MCP tools. Add the server to your client config once:
 
 ```json
 {
@@ -64,8 +100,4 @@ This skill calls OpenRegistry MCP tools. Add the server to your AI client config
 }
 ```
 
-Free anonymous tier, no key required. If tool calls return `tool not found`, the server is not wired up — see [openregistry.sophymarine.com/docs](https://openregistry.sophymarine.com/docs).
-
-## Why the data stays fresh
-
-Every tool call is a live, direct query to the government source. Updates from the registry surface the moment the registry records them. No nightly scrape, no aggregator middleman, no cache layer we control.
+Free anonymous tier, no API key. Tools auto-load in Claude Desktop, Cursor, Cline, Continue, and any MCP-compatible agent.
