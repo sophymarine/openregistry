@@ -14,7 +14,7 @@ Tools: search companies, get profiles, officers, shareholders, charges, filings,
 
 Covers UK Companies House, Ireland CRO, France RNE, Spain BORME, Italy InfoCamere, Norway Brreg, Poland KRS, Netherlands KVK, Belgium KBO, Switzerland Zefix, Finland, Czechia, Korea, Taiwan, New Zealand, Cayman Island, Australia, Canada and a lot more.
 
-Free anonymous tier; paid keys for higher quota.
+Free tier; paid keys for higher quota and depth.
 
 > **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences.
 
@@ -55,8 +55,8 @@ A platform by [Sophymarine](https://sophymarine.com).
 | Source identifier preserved | **Yes** — registry URL reconstructable from response | OC ID is primary; mapping back is lossy | Native | BvD ID is primary |
 | Filing PDFs / iXBRL bytes | **Returned raw** | Metadata only; full bytes paywalled | Native | Paywalled |
 | Cross-border chain walking | **One MCP prompt, ≤30 jurisdictions** | Manual ID-stitching across countries | Out of scope (UK only) | Limited to BvD-mastered entities |
-| Authentication | OAuth 2.1 + DCR; **anonymous tier free** | API key (signup required) | API key (signup required) | Per-seat license, **$30k–$50k+/yr** |
-| Self-serve free tier | **20 req/min/IP — all tools, all jurisdictions** | Free for non-commercial only, throttled | Free, single-jurisdiction | None |
+| Authentication | **OAuth 2.1 + DCR** | API key (signup required) | API key (signup required) | Per-seat license, **$30k–$50k+/yr** |
+| Self-serve free tier | **Free tier: 30 req/min, 6 core tools, all jurisdictions** | Free for non-commercial only, throttled | Free, single-jurisdiction | None |
 | Made for AI agents | **MCP-native, JSON-RPC over Streamable HTTP** | REST; no MCP wrapper | REST; no MCP wrapper | REST; no MCP wrapper |
 
 **One-liner.** OpenCorporates and BvD are *aggregators* that re-shape and cache; CH-direct is single-jurisdiction. OpenRegistry is the layer between an AI agent and the original government APIs — verbatim, live, multi-country, no API key for the free tier.
@@ -65,7 +65,7 @@ Where OpenRegistry deliberately doesn't have data (statutorily restricted BO reg
 
 ## Quick example calls
 
-Three full request → response examples for the most common tools. All three reproducible against the free anonymous tier — no signup, no API key. Calls are JSON-RPC over MCP Streamable HTTP at `https://openregistry.sophymarine.com/mcp`; for brevity we show the tool name + arguments + the unwrapped response.
+Three full request → response examples for the most common tools. All three reproducible on the free tier. Calls are JSON-RPC over MCP Streamable HTTP at `https://openregistry.sophymarine.com/mcp`; for brevity we show the tool name + arguments + the unwrapped response.
 
 ### 1. `search_companies` — find a UK company
 
@@ -270,7 +270,7 @@ Every skill above is also served by the MCP server as a named **prompt** — so 
 
 ## Connect
 
-OpenRegistry works with every major MCP-capable client. The same `https://openregistry.sophymarine.com/mcp` endpoint works across all of them — anonymous tier needs no signup.
+OpenRegistry works with every major MCP-capable client. The same `https://openregistry.sophymarine.com/mcp` endpoint works across all of them.
 
 ### Claude Desktop
 
@@ -426,7 +426,7 @@ Zed, Goose, Continue, and any other MCP 2025-06-18 client work with the standard
 }
 ```
 
-Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow for authenticated tiers (Dynamic Client Registration per RFC 7591 — no API key to paste).
+Streamable HTTP transport per [MCP spec 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18). OAuth 2.1 authorization flow (Dynamic Client Registration per RFC 7591 — no API key to paste).
 
 ### AI agent frameworks (code samples)
 
@@ -443,7 +443,6 @@ Every major agent framework ships a generic MCP adapter, so OpenRegistry's 27 to
 
 | Tier | Price | Rate limit | Cross-border fan-out | Source URLs |
 |---|---|---|---|---|
-| Anonymous | free | 20/min per IP | 3 countries / 60s | identifiers only (URL reconstructable) |
 | Free (signed in) | free | 30/min per user | 3 countries / 60s | identifiers only |
 | Pro | $9/mo | 180/min per user | 10 countries / 60s | identifiers only |
 | Max | $29/mo | 900/min per user | 30 countries / 60s | identifiers only |
