@@ -16,7 +16,7 @@ Add the OpenRegistry MCP server to your client config once:
 }
 ```
 
-Free anonymous tier, no API key. After adding, the agent loads any of the skills below on demand.
+After adding, the agent loads any of the skills below on demand.
 
 ## Catalogue
 

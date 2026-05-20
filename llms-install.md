@@ -19,7 +19,7 @@ OpenRegistry is a **remote hosted MCP server** — there is no local package to 
 
 ## Authentication
 
-- **Anonymous access is supported out of the box** — no auth needed, rate-limited to 20 req/min per IP, 3-country fan-out per 60s window. This is the default if the client does not initiate an OAuth flow.
+- **Free tier via the client's standard MCP OAuth 2.1 / DCR flow** — no API key to paste. Paid tiers raise rate limits.
 - **Optional OAuth 2.1** — for higher rate limits and enterprise source-provenance fields. If the client supports the MCP OAuth 2.1 authorization flow (MCP spec 2025-06-18), it will:
   1. Fetch ````json
 {

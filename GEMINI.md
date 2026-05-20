@@ -21,7 +21,7 @@ UK · Norway · France · Germany (free since DiRUG 2022) · Italy (via EU BRIS)
 
 ## Access
 
-Anonymous tier works out of the box — no API key, no installation, 20 req/min per IP. Paid tiers raise limits and open cross-border fan-out; see https://openregistry.sophymarine.com/tiers.
+Free tier out of the box; paid tiers raise limits and open cross-border fan-out. See https://openregistry.sophymarine.com/tiers.
 
 All skills are published at https://github.com/sophymarine/openregistry/tree/main/skills — drop the SKILL.md files into your agent's prompt or use the 10 MCP Prompts the server exposes via prompts/list.
 
