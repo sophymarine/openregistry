@@ -460,13 +460,13 @@ Enterprise tier pre-synthesises `source_url` / `registry_url` / `registry_name` 
 
 - **Hosted app + account management**: [openregistry.sophymarine.com/account](https://openregistry.sophymarine.com/account)
 - **Tool capability matrix**: call `list_jurisdictions` or visit [openregistry.sophymarine.com/jurisdictions](https://openregistry.sophymarine.com/jurisdictions)
-- **Enterprise inquiries / partnerships**: contact@sophymarine.com
+- **Enterprise inquiries / partnerships**: https://sophymarine.com/about/contact-us
 - **Status + uptime**: [openregistry.sophymarine.com/status](https://openregistry.sophymarine.com/status)
 - **This repo** is documentation only. The OpenRegistry service implementation is closed-source; raise issues here for the *integration experience* (documentation, examples, install flows).
 
 ## Security
 
-Found a vulnerability? Please email `security@sophymarine.com` rather than opening a public issue. See [SECURITY.md](./SECURITY.md) for the full reporting policy, scope, and safe-harbor terms.
+Found a vulnerability? Please use our [contact form](https://sophymarine.com/about/contact-us) rather than opening a public issue. See [SECURITY.md](./SECURITY.md) for the full reporting policy, scope, and safe-harbor terms.
 
 ## Code of Conduct
 
