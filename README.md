@@ -221,17 +221,6 @@ When the upstream registry has its own outage, we surface its error verbatim wit
 }
 ```
 
-Some tools also return `501` with an **alternative tool** suggestion when the upstream registry doesn't expose the requested concept (e.g. CZ political parties don't have officers in the standard sense — call `search_specialised_records` with `source="rpsh"` instead):
-
-```jsonc
-{
-  "error": "alternative_tool_required",
-  "alternative_tool": "search_specialised_records",
-  "alternative_args": { "jurisdiction": "CZ", "source": "rpsh", "...": "..." },
-  "human_message": "Czech political parties register is exposed via the RPSH sub-source."
-}
-```
-
 ### Recommended client back-off
 
 | Error | Action |
