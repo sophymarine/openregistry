@@ -8,7 +8,7 @@
 [![Follow @sophymarine on X](https://img.shields.io/badge/Follow%20%40sophymarine-000000?style=flat&logo=x&logoColor=white)](https://x.com/sophymarine)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-D22128.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Real-time direct access to unmodified data and raw filings of 30 official government registries via MCP.
+Real-time direct access to unmodified data and raw filings of about 30 official government registries via MCP.
 
 Tools: search companies, get profiles, officers, shareholders, charges, filings, and financial-statement documents.
 
