@@ -16,7 +16,7 @@ Covers UK Companies House, Ireland CRO, France RNE, Spain BORME, Italy InfoCamer
 
 Free tier; paid keys for higher quota and depth.
 
-> **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **22 more national registries** under their respective open-data licences.
+> **Data licensed from** 🇬🇧 [UK Companies House](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) · 🇮🇪 [CRO Ireland](https://www.cro.ie/) · 🇳🇴 [Brønnøysund](https://data.norge.no/nlod/en/2.0) · 🇨🇭 [Zefix](https://opendata.swiss/en/terms-of-use#terms_by) · 🇵🇱 [KRS Ministry of Justice](https://api-krs.ms.gov.pl/) — and **75+ more national registries** under their respective open-data licences.
 
 [![OpenRegistry — walking a UK retailer's shareholders 4 layers deep to the family that owns it](https://raw.githubusercontent.com/sophymarine/openregistry/main/brand/demo.svg)](https://openregistry.sophymarine.com)
 
@@ -58,7 +58,7 @@ A platform by [Sophymarine](https://sophymarine.com).
 
 **One-liner.** OpenCorporates and BvD are *aggregators* that re-shape and cache; CH-direct is single-jurisdiction. OpenRegistry is the layer between an AI agent and the original government APIs — verbatim, live, multi-country, no API key for the free tier.
 
-Where OpenRegistry deliberately doesn't have data (statutorily restricted BO registers post-CJEU C-37/20: DE, ES, IT, NL, LU, AT, MT, PT), the response carries a structured `alternative_url` pointing at the AML-obliged-only statutory portal. We don't pretend to have data we don't.
+Where OpenRegistry deliberately doesn't have data, the response carries a structured `alternative_url` pointing at the AML-obliged-only statutory portal. We don't pretend to have data we don't.
 
 ## Quick example calls
 
@@ -439,7 +439,7 @@ Enterprise tier pre-synthesises `source_url` / `registry_url` / `registry_name` 
 ## Security and compliance
 
 - **Auth**: OAuth 2.1 + PKCE, passwordless email magic links, RFC 7591 Dynamic Client Registration. No pre-shared API keys.
-- **Privacy**: OpenRegistry proxies official public-registry data. Beneficial-ownership registers that became access-restricted post-CJEU C-37/20 (DE, ES, IT, NL, LU, AT, MT, PT) are not proxied — the tool returns `501 alternative_url` pointing at the statutory gated portal (AML-obliged entities only). We explicitly flag where AML gates block the ownership chain.
+- **Privacy**: OpenRegistry proxies official public-registry data.
 - **Rate limits**: per-user for authenticated traffic, per-IP for anonymous — plus a per-jurisdiction upstream-protection cap shared across all users, to keep OpenRegistry a good citizen with the registries we depend on.
 
 ## Support
