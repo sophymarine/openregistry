@@ -425,10 +425,6 @@ Every major agent framework ships a generic MCP adapter, so OpenRegistry's 27 to
 - **AutoGen (Microsoft)** (Python) → [/docs/integrations/autogen](https://openregistry.sophymarine.com/docs/integrations/autogen)
 - **Vercel AI SDK** (TypeScript) → [/docs/integrations/vercel-ai-sdk](https://openregistry.sophymarine.com/docs/integrations/vercel-ai-sdk)
 
-## Tiers
-
-All tiers receive the full unmodified upstream data — the only thing Enterprise adds is pre-built source-URL fields for audit-trail convenience.
-
 ## Provenance & Auditability
 
 Every response preserves the upstream registry's identifiers so any fact can be verified at the government record:
