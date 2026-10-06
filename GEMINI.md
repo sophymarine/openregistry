@@ -1,13 +1,13 @@
 # OpenRegistry — Gemini CLI Extension
 
-OpenRegistry is your agent's live hotline to 27 national government company registries.
+OpenRegistry is your agent's live hotline to 80+ national government company registries.
 
 Every tool call is a real-time query to the government's own system at the moment you ask. Responses are unmodified — the registry's field names, status codes, and raw filing bytes (XHTML iXBRL / PDF / XBRL) come through verbatim, with source identifiers preserved for one-click audit.
 
 ## What to use it for
 
 - **KYC / AML / due-diligence research** — resolve a company name, pull profile + directors + UBO + shareholders + charges + latest accounts
-- **Cross-border UBO chain walking** — unmask the real individual behind a company by recursively querying PSC registers across 27 jurisdictions
+- **Cross-border UBO chain walking** — unmask the real individual behind a company by recursively querying PSC registers across 80+ jurisdictions
 - **Director / PEP screening** — find every company a person has been a director of (GB / FR / TW cross-company officer index)
 - **Live company accounts** — fetch the most recent statutory filing as machine-readable XBRL / iXBRL / PDF
 - **Corporate filing monitor** — scan recent filings for material events (director changes, new charges, insolvency markers)

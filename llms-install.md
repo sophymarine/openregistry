@@ -38,7 +38,7 @@ No user action is needed to paste keys.
 
 ## Post-install verification
 
-After adding the config, call `list_jurisdictions` as a smoke test. A successful response returns the per-country capability matrix (27 jurisdictions) and confirms the connection works.
+After adding the config, call `list_jurisdictions` as a smoke test. A successful response returns the per-country capability matrix (80+ jurisdictions) and confirms the connection works.
 
 A minimal probe:
 

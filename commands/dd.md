@@ -1,6 +1,6 @@
 ---
 name: dd
-description: Run a full statutory due-diligence dossier on a company using OpenRegistry. Pulls profile + directors + UBO + shareholders + charges + latest accounts live from 27 government registries.
+description: Run a full statutory due-diligence dossier on a company using OpenRegistry. Pulls profile + directors + UBO + shareholders + charges + latest accounts live from 80+ government registries.
 argument-hint: <company_name_or_id> <jurisdiction>
 ---
 

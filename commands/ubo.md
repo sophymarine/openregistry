@@ -1,6 +1,6 @@
 ---
 name: ubo
-description: Walk the cross-border ownership chain of a company until you reach individuals, listed entities, or an AML gate. Flagship OpenRegistry workflow — one prompt, 27 jurisdictions.
+description: Walk the cross-border ownership chain of a company until you reach individuals, listed entities, or an AML gate. Flagship OpenRegistry workflow — one prompt, 80+ jurisdictions.
 argument-hint: <company_name_or_id> <jurisdiction>
 ---
 
