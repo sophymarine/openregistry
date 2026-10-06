@@ -8,7 +8,7 @@
 [![Follow @sophymarine on X](https://img.shields.io/badge/Follow%20%40sophymarine-000000?style=flat&logo=x&logoColor=white)](https://x.com/sophymarine)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-D22128.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Real-time direct access to unmodified data and raw filings of about 30 official government registries via MCP.
+Real-time direct access to unmodified data and raw filings of about 80+ official government registries via MCP.
 
 Tools: search companies, get profiles, officers, shareholders, charges, filings, and financial-statement documents.
 
@@ -24,11 +24,9 @@ Free tier; paid keys for higher quota and depth.
 
 [![openregistry MCP server](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/card.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
 
-OpenRegistry is your AI agent's live hotline to 30 national company registries — UK Companies House, France RNE, Germany Handelsregister, Italy InfoCamere (via EU BRIS), Spain BORME, Poland KRS, Korea OpenDART, Canada CBCA, and more.
-
 **We return the registry's own response — unmodified.** Every field name, every status value, every raw filing byte (XHTML iXBRL / PDF / XBRL) is preserved exactly as the government's system emits it. The identifiers and jurisdiction routing let you reconstruct the government URL for any record. No aggregator markup. No field renames. No document re-rendering. No AI reinterpretation. No stale cache.
 
-**Chain queries across borders in a single prompt** — a UK Ltd → its Luxembourg SARL → its Cayman LP → the Jersey trust → the individual beneficiary, all in one conversation. Walk ownership structures through 30 jurisdictions to unmask the real person behind any company.
+**Chain queries across borders in a single prompt** — a UK Ltd → its Luxembourg SARL → its Cayman LP → the Jersey trust → the individual beneficiary, all in one conversation. Walk ownership structures through 80+ jurisdictions to unmask the real person behind any company.
 
 Hosted endpoint: **`https://openregistry.sophymarine.com/mcp`**
 
@@ -43,20 +41,19 @@ A platform by [Sophymarine](https://sophymarine.com).
 | **3. Unmodified + source-linked** | Every field name, every status code, every raw filing byte returned verbatim. The registry's own identifiers are preserved so any response traces back to the government record. Enterprise tier adds pre-synthesised `source_url` / `registry_url` / `data_license` fields. |
 | **4. Zero-stale** | No cache layer we control can ever go stale. You see an update the moment the government records it. Contrast with commercial data providers that serve 6-24 hour-old snapshots. |
 | **5. Stable** | Production-grade reliability, running on Cloudflare Workers' global edge + a warm pool of per-jurisdiction workers for stateful registries. |
-| **6. Cross-border** | Chain queries across 30 registries in a single prompt. Walk UK Ltd → LU SARL → KY LP → individual without leaving the conversation. |
+| **6. Cross-border** | Chain queries across 80+ registries in a single prompt. Walk UK Ltd → LU SARL → KY LP → individual without leaving the conversation. |
 
 ## How OpenRegistry differs
 
 |  | OpenRegistry | OpenCorporates | Companies House API direct | Bureau van Dijk Orbis |
 |---|:---:|:---:|:---:|:---:|
-| Coverage | **30 national registries** | ~140, mostly aggregated from upstream sources | UK only | ~430M companies, aggregated |
+| Coverage | **80+ national registries** | ~140, mostly aggregated from upstream sources | UK only | ~430M companies, aggregated |
 | Data freshness | **Live** — every call hits upstream | Scrape-and-cache (hours–days lag) | Live | 7-day to quarterly refresh |
 | Field shape | **Verbatim upstream payload** + unified envelope | Normalised to OC's own schema | Per-registry CH schema | BvD's own schema |
 | Source identifier preserved | **Yes** — registry URL reconstructable from response | OC ID is primary; mapping back is lossy | Native | BvD ID is primary |
 | Filing PDFs / iXBRL bytes | **Returned raw** | Metadata only; full bytes paywalled | Native | Paywalled |
-| Cross-border chain walking | **One MCP prompt, ≤30 jurisdictions** | Manual ID-stitching across countries | Out of scope (UK only) | Limited to BvD-mastered entities |
+| Cross-border chain walking | **One MCP prompt, ≤80+ jurisdictions** | Manual ID-stitching across countries | Out of scope (UK only) | Limited to BvD-mastered entities |
 | Authentication | **OAuth 2.1 + DCR** | API key (signup required) | API key (signup required) | Per-seat license, **$30k–$50k+/yr** |
-| Self-serve free tier | **Free tier: 30 req/min, 6 core tools, all jurisdictions** | Free for non-commercial only, throttled | Free, single-jurisdiction | None |
 | Made for AI agents | **MCP-native, JSON-RPC over Streamable HTTP** | REST; no MCP wrapper | REST; no MCP wrapper | REST; no MCP wrapper |
 
 **One-liner.** OpenCorporates and BvD are *aggregators* that re-shape and cache; CH-direct is single-jurisdiction. OpenRegistry is the layer between an AI agent and the original government APIs — verbatim, live, multi-country, no API key for the free tier.
@@ -429,13 +426,6 @@ Every major agent framework ships a generic MCP adapter, so OpenRegistry's 27 to
 - **Vercel AI SDK** (TypeScript) → [/docs/integrations/vercel-ai-sdk](https://openregistry.sophymarine.com/docs/integrations/vercel-ai-sdk)
 
 ## Tiers
-
-| Tier | Price | Rate limit | Cross-border fan-out | Source URLs |
-|---|---|---|---|---|
-| Free (signed in) | free | 30/min per user | 3 countries / 60s | identifiers only |
-| Pro | $9/mo | 180/min per user | 10 countries / 60s | identifiers only |
-| Max | $29/mo | 900/min per user | 30 countries / 60s | identifiers only |
-| Enterprise | contact | 3000/min per user | unlimited | **`source_url` / `registry_url` / `data_license` synthesised** |
 
 All tiers receive the full unmodified upstream data — the only thing Enterprise adds is pre-built source-URL fields for audit-trail convenience.
 
