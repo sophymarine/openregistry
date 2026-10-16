@@ -1,4 +1,4 @@
-# OpenRegistry
+# OpenRegistry - the world's first MCP and API for live company filings directly from official government registries worldwide
 
 [![Official MCP Registry](https://img.shields.io/badge/Official%20MCP%20Registry-io.github.sophymarine%2Fopenregistry-2088FF?logo=anthropic&logoColor=white)](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.sophymarine%2Fopenregistry)
 [![Glama Score](https://glama.ai/mcp/servers/sophymarine/openregistry/badges/score.svg)](https://glama.ai/mcp/servers/sophymarine/openregistry)
